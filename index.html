@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>판다마켓</title>
   <!-- 폰트 -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="/css/reset.css" />
+  <link rel="stylesheet" href="/css/style.css" />
 </head>
 <body>
   <header>
@@ -19,7 +20,7 @@
     <section class="section section_banner">
       <div class="inner">
         <div class="content_box">
-          <h2 class="section_tit">일상의 모든 물건을<br />거래해 보세요</h2>
+          <h2 class="section_title">일상의 모든 물건을<br />거래해 보세요</h2>
           <a href="/items" class="btn click_to_items">구경하러 가기</a>
         </div>
       </div>
@@ -28,8 +29,8 @@
       <div class="inner">
         <div class="section_img"><img src="/img/item_img.png" alt="인기 상품들 이미지"></div>
         <div class="section_txt">
-          <p class="section_cate">Hot item</p>
-          <h2 class="section_tit">인기 상품을<br />확인해 보세요</h2>
+          <p class="section_category">Hot item</p>
+          <h2 class="section_title">인기 상품을<br />확인해 보세요</h2>
           <h3 class="section_desc">가장 HOT한 중고거래 물품을<br />판다 마켓에서 확인해 보세요</h3>
         </div>
       </div>
@@ -37,8 +38,8 @@
     <section class="section section_search">
       <div class="inner">
         <div class="section_txt">
-          <p class="section_cate">Search</p>
-          <h2 class="section_tit">구매를 원하는<br />상품을 검색하세요</h2>
+          <p class="section_category">Search</p>
+          <h2 class="section_title">구매를 원하는<br />상품을 검색하세요</h2>
           <h3 class="section_desc">구매하고 싶은 물품은 검색해서<br />쉽게 찾아보세요</h3>
         </div>
         <div class="section_img"><img src="/img/search_img.png" alt="상품검색 이미지"></div>
@@ -48,8 +49,8 @@
       <div class="inner">
         <div class="section_img"><img src="/img/register_img.png" alt="상품등록 이미지"></div>
         <div class="section_txt">
-          <p class="section_cate">Register</p>
-          <h2 class="section_tit">판매를 원하는<br />상품을 등록하세요</h2>
+          <p class="section_category">Register</p>
+          <h2 class="section_title">판매를 원하는<br />상품을 등록하세요</h2>
           <h3 class="section_desc">어떤 물건이든 판매하고 싶은 상품을<br />쉽게 등록하세요</h3>
         </div>
       </div>
@@ -57,7 +58,7 @@
     <section class="section section_banner section_banner_02">
       <div class="inner">
         <div class="content_box">
-          <h2 class="section_tit">믿을 수 있는<br />판다마켓 중고 거래</h2>
+          <h2 class="section_title">믿을 수 있는<br />판다마켓 중고 거래</h2>
         </div>
       </div>
     </section>
@@ -77,5 +78,19 @@
       </div>
     </div>
   </footer>
+  
+  <script>
+    // 만약 주소가 /login이면 login.html로 이동
+    if (location.pathname === "/login") {
+      location.replace("/login.html");
+    }
+    
+    // 버튼을 눌렀을때도 login.html로 이동
+    document.querySelector(".login_btn").addEventListener("click", (e) => {
+      e.preventDefault();
+      history.pushState(null, "", "/login");
+      location.replace("login.html");
+    });
+  </script>
 </body>
 </html>

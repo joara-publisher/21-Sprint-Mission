@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>판다마켓</title>
+  <!-- 폰트 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
+  <link rel="stylesheet" href="/css/reset.css" />
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <main class="user_auth_page signup_page">
+    <a href="/" class="logo"></a>
+    <div class="user_auth_container">
+      <div class="inner">
+        <form action="" id="formSignup" name="formSignup">
+          <div class="input_wrap">
+            <label for="userEmail">이메일</label>
+            <input type="email" id="userEmail" name="userEmail" placeholder="이메일을 입력해주세요" required />
+          </div>
+          <div class="input_wrap">
+            <label for="userNickname">닉네임</label>
+            <input type="text" id="userNickname" name="userNickname" placeholder="닉네임을 입력해주세요" required />
+          </div>
+          <div class="input_wrap">
+            <label for="userPwd">비밀번호</label>
+            <div class="input_box">
+              <input type="password" id="userPwd" name="userPwd" placeholder="비밀번호를 입력해주세요" required />
+              <button type="button" class="eye_btn"></button>
+            </div>
+          </div>
+          <div class="input_wrap">
+            <label for="userPwd">비밀번호 확인</label>
+            <div class="input_box">
+              <input type="text" id="userPwd" name="userPwd" placeholder="비밀번호를 다시 한 번 입력해주세요" required />
+              <button type="button" class="eye_btn on"></button>
+            </div>
+          </div>
+          <div class="btn_wrap">
+            <button type="submit" class="btn signup_btn">회원가입</button>
+          </div>
+          
+          <div class="easy_login_wrap">
+            간편 로그인하기
+            <div class="easy_login_btns">
+              <a href="https://www.google.com/" target="_blank" class="easy_login_btn google"></a>
+              <a href="https://www.kakaocorp.com/page/" target="_blank" class="easy_login_btn kakao"></a>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="go_to_login">이미 회원이신가요?<a href="/login" class="login_btn">로그인</a></div>
+  </main>
+  
+  <script>
+    // 만약 주소가 /login이면 login.html로 이동
+    if (location.pathname === "/login") {
+      location.replace("/login.html");
+    }
+    
+    // 버튼을 눌렀을때도 login.html로 이동
+    document.querySelector(".login_btn").addEventListener("click", (e) => {
+      e.preventDefault();
+      history.pushState(null, "", "/login");
+      location.replace("login.html");
+    });
+  </script>
+</body>
+</html>
