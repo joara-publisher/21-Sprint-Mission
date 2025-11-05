@@ -133,12 +133,12 @@ section .section_img img {
 
 footer {
   width: 100%;
-  padding: 32px 0 108px;
+  padding: 32px 32px 108px;
   background-color: var(--gray900);
 }
 footer .container {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   max-width: 1120px;
   margin: 0 auto;
@@ -184,32 +184,171 @@ footer .link_box a.youtube {
   background-image: url('/img/youtube_ico.svg');
 }
 
-@media screen and (max-width: 744px) {
+@media (max-width: 1199px) {
+  header .container {
+    padding: 0 24px;
+  }
+
   .section_banner {
-    padding-top: 54px;
+    padding-top: 84px;
   }  
   .section_banner .content_box {
+    max-width: none;
     height: 687px;
     background-position: bottom;
     background-size: 100% auto;
   }
   .section_banner .content_box .section_title {
+    font-size: 40px;
+    line-height: 140%;
     text-align: center;
     padding-top: 0;
     margin-bottom: 24px;
   }
-  .section_banner .content_box .section_title br {
-    display: none;
-  }
   .section_banner .content_box .click_to_items {
     margin: 0 auto;
+  }
+  
+  .section_items .inner, .section_search .inner, .section_register .inner {
+    flex-direction: column;
+    align-items: start;
+    gap: 24px;
+    max-width: none;
+    padding: 24px 24px 28px;
+  }
+  .section_register .inner {
+    padding-bottom: 56px;
+  }
+  .section_search .inner {
+    align-items: end;
+    text-align: right;
+  }
+  section .section_img img {
+    height: auto;
+  }
+  section .section_category {
+    margin-bottom: 16px;
+  }
+  section .section_title {
+    font-size: 32px;
+    line-height: 42px;
+  }
+  section .section_title br {
+    display: none;
+  }
+  section .section_desc {
+    font-size: 18px;
+    line-height: 26px;
+  }
+  section .section_category {
+    order: 1;
+  }
+  section .section_txt {
+    order: 2;
+  }
+  
+  .section_banner_02 {
+    padding-top: 201px;
+  }
+  .section_banner_02 .content_box {
+    height: 726px;
+  }
+  .section_banner_02 .content_box .section_title br {
+    display: block;
+  }
+  
+  footer .container {
+    max-width: 536px;
+  }
+  footer .copyright {
+    color: var(--gray200);
+  }
+}
+
+@media (max-width: 767px) {
+  header .container {
+    padding: 0 16px;
+  }
+
+  .section_banner {
+    padding-top: 48px;
+  }
+  .section_banner .content_box {
+    height: 492px;
+  }
+  .section_banner .content_box .section_title {
+    font-size: 32px;
+    line-height: 140%;
+    margin-bottom: 18px;
+  }
+  .section_banner .section_title br {
+    display: block;
+  }
+  .section_banner .content_box .click_to_items {
+    width: 240px;
+    height: 48px;
+    font-size: 18px;
+    line-height: 26px;
+  }
+  
+  .section_items .inner, .section_search .inner, .section_register .inner {
+    padding: 20px 15px;
+  }
+  .section_items .inner {
+    padding-top: 52px;
+  }
+  .section_register .inner {
+    padding-bottom: 83px;
+  }
+  section .section_category {
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+  section .section_title {
+    font-size: 24px;
+    line-height: 32px;
+    margin-bottom: 16px;
+  }
+  .section .section_desc {
+    font-size: 16px;
+  }
+  
+  .section_banner_02 {
+    padding-top: 121px;
+  } 
+  .section_banner_02 .content_box .section_title {
+    margin-bottom: 0;
+  }
+  .section_banner .content_box {
+    height: 419px;  
+  }
+  
+  footer {
+    padding: 32px 32px 30px;
+  }
+  footer .container {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 59px 0;
+    max-width: none;
+  }
+  footer .copyright {
+    order: 3;
+    width: 100%;
+    text-align: left;
+  }
+  footer .popup_box {
+    order: 1;
+  }
+  footer .link_box {
+    order: 2;
   }
 }
 
 /* 로그인 & 회원가입 공통 화면 */
 .user_auth_page {
   display: flex;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
   flex-direction: column;
   min-height: 100vh;
@@ -218,7 +357,7 @@ footer .link_box a.youtube {
   width: 396px;
   height: 132px;
   background: url('/img/login_signup_logo.png') no-repeat center / contain;
-  margin-bottom: 40px;
+  margin: 60px 0 40px;
 }
 .user_auth_page .user_auth_container {
   max-width: 640px;
@@ -248,6 +387,10 @@ footer .link_box a.youtube {
   border: none;
   border-radius: 12px;
 }
+.user_auth_page form input::placeholder {color: var(--gray400);}
+.user_auth_page form input::-webkit-input-placeholder {color: var(--gray400);}
+.user_auth_page form input:-ms-input-placeholder {color: var(--gray400);}
+
 .user_auth_page form .input_box {
   position: relative;
 }
@@ -278,8 +421,11 @@ footer .link_box a.youtube {
   text-align: center;
   color: var(--gray100);
   margin-top: 24px;
-  background-color: var(--blue);
+  background-color: var(--gray400);
   border-radius: 40px;;
+}
+.user_auth_page form .btn.complete {
+  background-color: var(--blue);
 }
 .user_auth_page .easy_login_wrap {
   display: flex;
@@ -326,4 +472,38 @@ background-image: url('/img/login_kakao_ico.svg');
   color: var(--blue);
   text-decoration: underline;
   margin-left: 4px;
+}
+
+@media (max-width: 1199px) {
+  .user_auth_page .user_auth_container {
+    padding: 0 52px;
+  }
+  .user_auth_page .logo {
+    margin: 48px 0 40px;
+  }
+}
+
+@media (max-width: 767px) {
+  .user_auth_page .user_auth_container {
+    max-width: 400px;
+    padding: 0 16px;
+  }
+  .user_auth_page .logo {
+    width: 198px;
+    height: 66px;
+    margin: 24px 0;
+  }
+  .user_auth_page form .input_wrap + .input_wrap {
+    margin-top: 16px;
+  }
+  .user_auth_page .input_wrap {
+    gap: 8px;
+  }
+  .user_auth_page form label{
+    font-size: 14px;
+    line-height: 24px;
+  }
+  .user_auth_page form .btn {
+    margin-top: 16px;
+  }
 }

@@ -4,6 +4,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>판다마켓</title>
+  
+  <!-- 파비콘 -->
+  <link rel="icon" href="/img/favicon.png" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="/favicon.png" />
+  
+  <!-- Open Graph (SNS 공유용) -->
+  <meta property="og:title" content="판다 마켓" />
+  <meta property="og:description" content="일상의 모든 물건을 거래해보세요" />
+  <meta property="og:image" content="/img/og_image.png" />
+  <meta property="og:url" content="/" />
+  <meta property="og:type" content="website" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="판다 마켓" />
+  <meta name="twitter:description" content="일상의 모든 물건을 거래해보세요" />
+  <meta name="twitter:image" content="/img/og_image.png" />
+  
   <!-- 폰트 -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
   <link rel="stylesheet" href="/css/reset.css" />
@@ -41,19 +59,5 @@
     </div>
     <div class="go_to_signup">판다마켓이 처음이신가요? <a href="/signup" class="signup_btn">회원가입</a></div>
   </main>
-  
-  <script>
-    // 만약 주소가 /login이면 login.html로 이동
-    if (location.pathname === "/signup") {
-      location.replace("/signup.html");
-    }
-    
-    // 버튼을 눌렀을때도 login.html로 이동
-    document.querySelector(".signup_btn").addEventListener("click", (e) => {
-      e.preventDefault();
-      history.pushState(null, "", "/signup");
-      location.replace("signup.html");
-    });
-  </script>
 </body>
 </html>
