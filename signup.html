@@ -24,8 +24,12 @@
   
   <!-- 폰트 -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
-  <link rel="stylesheet" href="/css/reset.css" />
-  <link rel="stylesheet" href="/css/style.css" />
+  <!-- CSS -->
+  <link rel="stylesheet" href="./css/reset.css">
+  <link rel="stylesheet" href="./css/global.css">
+  <link rel="stylesheet" href="./css/auth.css">
+  <!-- JS -->
+  <script type="module" src="./js/auth.js"></script>
 </head>
 <body>
   <main class="user_auth_page signup_page">
@@ -36,10 +40,12 @@
           <div class="input_wrap">
             <label for="userEmail">이메일</label>
             <input type="email" id="userEmail" name="userEmail" placeholder="이메일을 입력해주세요" required />
+            <div class="error_message"></div>
           </div>
           <div class="input_wrap">
             <label for="userNickname">닉네임</label>
             <input type="text" id="userNickname" name="userNickname" placeholder="닉네임을 입력해주세요" required />
+            <div class="error_message"></div>
           </div>
           <div class="input_wrap">
             <label for="userPwd">비밀번호</label>
@@ -47,28 +53,30 @@
               <input type="password" id="userPwd" name="userPwd" placeholder="비밀번호를 입력해주세요" required />
               <button type="button" class="eye_btn"></button>
             </div>
+            <div class="error_message"></div>
           </div>
           <div class="input_wrap">
             <label for="userPwd">비밀번호 확인</label>
             <div class="input_box">
-              <input type="text" id="userPwd" name="userPwd" placeholder="비밀번호를 다시 한 번 입력해주세요" required />
-              <button type="button" class="eye_btn on"></button>
+              <input type="password" id="userPwdVerify" name="userPwdVerify" placeholder="비밀번호를 다시 한 번 입력해주세요" required />
+              <button type="button" class="eye_btn"></button>
             </div>
+            <div class="error_message"></div>
           </div>
           <div class="btn_wrap">
             <button type="submit" class="btn signup_btn">회원가입</button>
           </div>
           
-          <div class="easy_login_wrap">
+          <div class="easy_signin_wrap">
             간편 로그인하기
-            <div class="easy_login_btns">
-              <a href="https://www.google.com/" target="_blank" class="easy_login_btn google"></a>
-              <a href="https://www.kakaocorp.com/page/" target="_blank" class="easy_login_btn kakao"></a>
+            <div class="easy_signin_btns">
+              <a href="https://www.google.com/" target="_blank" class="easy_signin_btn google"></a>
+              <a href="https://www.kakaocorp.com/page/" target="_blank" class="easy_signin_btn kakao"></a>
           </div>
         </form>
       </div>
     </div>
-    <div class="go_to_login">이미 회원이신가요?<a href="/signin" class="login_btn">로그인</a></div>
+    <div class="go_to_signin">이미 회원이신가요?<a href="/signin" class="signin_btn">로그인</a></div>
   </main>
 </body>
 </html>

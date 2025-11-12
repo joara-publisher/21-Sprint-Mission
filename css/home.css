@@ -1,0 +1,209 @@
+section {
+  word-break: keep-all;
+  overflow: hidden;
+}
+section .inner {
+  max-width: 1920px;
+  width: 100%;
+  padding: 0 20px;
+  margin: 0 auto;
+}
+section .section_title {
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 140%;
+  margin-bottom: 24px;
+}
+section .section_category {
+  font-weight: 800;
+  font-size: 18px;
+  line-height: 26px;
+  color: var(--blue);
+  margin-bottom: 12px;
+}
+section .section_desc {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 32px;
+}
+section .section_img img {
+  height: 444px;
+}
+
+.section_banner {
+  padding-top: 200px;
+  background-color: #CFE5FF;
+}
+.section_banner .inner {
+  padding: 0;
+}
+.section_banner .content_box {
+  max-width: 1150px;
+  height: 340px;
+  padding: 0 20px;
+  margin: 0 auto;
+  background: url('/img/banner_img.png') no-repeat center right / auto 100%;
+}
+.section_banner .content_box .section_title {
+  max-width: 12ch;
+  padding-top: 40px;
+  margin-bottom: 32px;
+}
+.section_banner .content_box .click_to_items {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 357px;
+  height: 56px;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 32px;
+  text-align: center;
+  color: var(--gray50);
+  border-radius: 40px;
+  background-color: var(--blue);
+}
+
+.section_items .inner, .section_search .inner, .section_register .inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 64px;
+  max-width: 988px;
+  padding: 138px 0;
+}
+.section_search .inner .section_txt {
+  text-align: right;
+}
+
+.section_bottom .content_box {
+  background: url('/img/banner_img_02.png') no-repeat center right / auto 100%;
+}
+.section_bottom .content_box .section_title {
+  padding-top: 122px;
+  margin-bottom: 0;
+}
+
+@media (max-width: 1199px) {
+  .section_banner {
+    padding-top: 84px;
+  }  
+  .section_banner .content_box {
+    max-width: none;
+    height: 687px;
+    background-position: bottom;
+    background-size: 100% auto;
+  }
+  .section_banner .content_box .section_title {
+    max-width: 100%;
+    font-size: 40px;
+    line-height: 140%;
+    text-align: center;
+    padding-top: 0;
+    margin-bottom: 24px;
+  }
+  .section_banner .content_box .click_to_items {
+    margin: 0 auto;
+  }
+  
+  .section_items .inner, .section_search .inner, .section_register .inner {
+    flex-direction: column;
+    align-items: start;
+    gap: 24px;
+    max-width: none;
+    padding: 24px 24px 28px;
+  }
+  .section_register .inner {
+    padding-bottom: 56px;
+  }
+  .section_search .inner {
+    align-items: end;
+  }
+  section .section_img img {
+    height: auto;
+  }
+  section .section_category {
+    margin-bottom: 16px;
+  }
+  section .section_title {
+    font-size: 32px;
+    line-height: 42px;
+  }
+  section .section_title br {
+    display: none;
+  }
+  section .section_desc {
+    font-size: 18px;
+    line-height: 26px;
+  }
+  section .section_category {
+    order: 1;
+  }
+  section .section_txt {
+    order: 2;
+  }
+  
+  .section_bottom {
+    padding-top: 201px;
+  }
+  .section_bottom .content_box {
+    height: 726px;
+  }
+  .section_bottom .content_box .section_title {
+    max-width: 12ch;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 767px) {
+  .section_banner {
+    padding-top: 48px;
+  }
+  .section_banner .content_box {
+    height: 492px;
+  }
+  .section_banner .content_box .section_title {
+    font-size: 32px;
+    line-height: 140%;
+    max-width: 12ch;
+    margin: 0 auto 18px;
+  }
+  .section_banner .content_box .click_to_items {
+    width: 240px;
+    height: 48px;
+    font-size: 18px;
+    line-height: 26px;
+  }
+  
+  .section_items .inner, .section_search .inner, .section_register .inner {
+    padding: 20px 15px;
+  }
+  .section_items .inner {
+    padding-top: 52px;
+  }
+  .section_register .inner {
+    padding-bottom: 83px;
+  }
+  section .section_category {
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+  section .section_title {
+    font-size: 24px;
+    line-height: 32px;
+    margin-bottom: 16px;
+  }
+  .section .section_desc {
+    font-size: 16px;
+  }
+  
+  .section_bottom {
+    padding-top: 121px;
+  } 
+  .section_bottom .content_box .section_title {
+    margin-bottom: 0;
+  }
+  .section_banner .content_box {
+    height: 419px;  
+  }
+}
