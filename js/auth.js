@@ -1,30 +1,60 @@
 import { validateEmail, validatePassword, validateNickname, validatePasswordVerify } from './validation.js';
 
+// 공통 에러 표시 함수
+function showError(element, message) {
+  const errorInput = element.closest('input');
+  errorInput.classList.add('error');
+  const errorMessage = element.closest('.input_wrap').querySelector('.error_message');
+  errorMessage.textContent = message;
+  errorMessage.classList.add('active');
+}
+
+function hideError(element) {
+  const errorInput = element.closest('input');
+  errorInput.classList.remove('error');
+  const errorMessage = element.closest('.input_wrap').querySelector('.error_message');
+  errorMessage.classList.remove('active');
+  errorMessage.textContent = '';
+}
 
 const signinForm = document.querySelector('#formSignin');
 
 if(signinForm) {
   // signin 로그인 페이지
   const signinEmail = signinForm.querySelector('#userEmail');
-  const signinPwd = signinForm.querySelector('#userPwd');
+  const signinPassword = signinForm.querySelector('#userPassword');
   const signinFormBtn = signinForm.querySelector('.signin_btn');
   
-  let emailValid = false;
-  let pwdValid = false;
+  let isEmailValid = false;
+  let isPasswordValid = false;
   
   signinEmail.addEventListener('focusout', (e) => {
-    emailValid = validateEmail(e.target);
+    const { valid, message } = validateEmail(e.target.value);
+    
+    if (!valid) {
+      showError(e.target, message);
+    } else {
+       hideError(e.target);
+    }
+    isEmailValid = valid;
     checkFormValidity();
   });
   
-  signinPwd.addEventListener('focusout', (e) => {
-    pwdValid = validatePassword(e.target);
+  signinPassword.addEventListener('focusout', (e) => {
+    const { valid, message } = validatePassword(e.target.value);
+    
+    if (!valid) {
+      showError(e.target, message);
+    } else {
+       hideError(e.target);
+    }
+    isPasswordValid = valid;
     checkFormValidity();
   });
   
   // 로그인 폼 유효성 검사 체크
   function checkFormValidity() {
-    if (emailValid && pwdValid) toggleButtonState(signinFormBtn, true);
+    if (isEmailValid && isPasswordValid) toggleButtonState(signinFormBtn, true);
     else toggleButtonState(signinFormBtn, false);
   }
   
@@ -43,42 +73,82 @@ if(signupForm) {
   // signup 회원가입 페이지
   const signupEmail = signupForm.querySelector('#userEmail');
   const signupNickname = signupForm.querySelector('#userNickname');
-  const signupPwd = signupForm.querySelector('#userPwd');
-  const signupPwdVerify = signupForm.querySelector('#userPwdVerify');
+  const signupPassword = signupForm.querySelector('#userPassword');
+  const signupPasswordVerify = signupForm.querySelector('#userPasswordVerify');
   const signupFormBtn = signupForm.querySelector('.signup_btn');
   
-  let emailValid = false;
-  let nicknameValid = false;
-  let pwdValid = false;
-  let pwdValidVerify = false;
+  let isEmailValid = false;
+  let isNicknameValid = false;
+  let isPasswordValid = false;
+  let isPasswordValidVerify = false;
   
-  signupEmail.addEventListener('focusout', (e) => {
-    emailValid = validateEmail(e.target);
+  signupEmail.addEventListener('focusout', (e) => {    
+    const { valid, message } = validateEmail(e.target.value);
+    
+    if (!valid) {
+      showError(e.target, message);
+    } else {
+       hideError(e.target);
+    }
+    isEmailValid = valid;
     checkFormValidity();
   });
   
   signupNickname.addEventListener('focusout', (e) => {
-    nicknameValid = validateNickname(e.target);
+    const { valid, message } = validateNickname(e.target.value);
+    
+    if (!valid) {
+      showError(e.target, message);
+    } else {
+       hideError(e.target);
+    }
+    isNicknameValid = valid;
     checkFormValidity();
   });
   
-  signupPwd.addEventListener('focusout', (e) => {
-    pwdValid = validatePassword(e.target);
-    // 비밀번호 확인 -> 비밀번호 순으로 입력하는 경우
-    if(pwdValid && signupPwdVerify.value != '') pwdValidVerify = validatePasswordVerify(signupPwdVerify, e.target.value);
+  signupPassword.addEventListener('focusout', (e) => {
+    const { valid, message } = validatePassword(e.target.value);
+    
+    if (!valid) {
+      showError(e.target, message);
+    } else  {
+      hideError(e.target);
+    }
+    
+    // 비밀번호 확인을 먼저 입력하거나 비밀번호를 수정할 경우
+    if(signupPasswordVerify.value !== '') {
+      const { valid, message } = validatePasswordVerify(signupPasswordVerify.value, e.target.value);
+      
+      if(!valid) {
+        showError(signupPasswordVerify, message);
+      } else {
+        hideError(signupPasswordVerify);
+      }
+      isPasswordValidVerify = valid;
+    }
+    
+    isPasswordValid = valid;
     checkFormValidity();
   });
   
-  signupPwdVerify.addEventListener('focusout', (e) => {
-    pwdValidVerify = validatePasswordVerify(e.target, signupPwd.value);
-    // 나중에 비밀번호를 수정하는 경우
-    if (pwdValidVerify && signupPwd.value !== signupPwdVerify.value) pwdValidVerify = validatePasswordVerify(e.target, signupPwd.value);
+  signupPasswordVerify.addEventListener('focusout', (e) => {
+    const { valid, message } = validatePasswordVerify(e.target.value, signupPassword.value);
+    
+    if (!valid) {
+      showError(e.target, message);
+    } 
+    else {
+       hideError(e.target);
+    }
+    isPasswordValidVerify = valid;
     checkFormValidity();
   });
   
   // 회원가입 폼 유효성 검사 체크
   function checkFormValidity() {
-    if (emailValid && nicknameValid && pwdValid && pwdValidVerify) toggleButtonState(signupFormBtn, true);
+    if (isEmailValid && isNicknameValid && isPasswordValid && isPasswordValidVerify) {
+      toggleButtonState(signupFormBtn, true);
+    }
     else toggleButtonState(signupFormBtn, false);
   }
   
