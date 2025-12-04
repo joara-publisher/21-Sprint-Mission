@@ -1,4 +1,4 @@
-import styles from "./ProductListITem.module.css";
+import styles from "./ProductListItem.module.css";
 import likeIcon from "../assets//productLike.svg"
 
 function ProductListItem ({list, category}) {
