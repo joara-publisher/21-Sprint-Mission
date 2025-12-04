@@ -1,0 +1,51 @@
+.itemListPage {
+  padding: 0 20px;
+}
+.container {
+  max-width: 1200px;
+  padding: 23px 0 0;
+  margin: 0 auto;
+}
+.itemListBox + .itemListBox {
+  margin-top: 40px;
+}
+.titleBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+.listTitle {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 32px;
+  color: var(--gray900);
+}
+.searchSelectBox {
+  display: flex;
+  gap: 12px;
+}
+.moButton {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .itemListBox + .itemListBox {
+    margin-top: 24px;
+  }
+  .titleBox {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .moButton {
+    display: block;
+  }
+  .pcButton {
+    display: none;
+  }
+  .searchSelectBox {        
+    justify-content: space-between;
+    gap: 14px;
+    width: 100%;
+  }
+}
