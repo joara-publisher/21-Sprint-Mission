@@ -21,8 +21,8 @@ function Pagination({currentPage, totalCount, pageSize, onChange}) {
       <ul>
         <li className={styles.prevButton}>
           <button
-            onClick={() => onChange(startPage - 1)}
-            disabled={startPage === 1}
+            onClick={() => onChange(currentPage - 1)}
+            disabled={currentPage === 1}
           >
           <img src={pageArrImg} alt="이전 버튼 이미지" />
         </button>
@@ -37,8 +37,8 @@ function Pagination({currentPage, totalCount, pageSize, onChange}) {
         ))}
         <li className={styles.nextButton}>
           <button
-            onClick={() => onChange(endPage + 1)}
-            disabled={endPage === totalPages}
+            onClick={() => onChange(currentPage + 1)}
+            disabled={currentPage === totalPages}
           >
             <img src={pageArrImg} alt="다음 버튼 이미지" />
           </button>

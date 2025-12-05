@@ -19,6 +19,7 @@
   background: url('../assets/searchIcon.svg') no-repeat center / 15px 15px;
 }
 .searchInput {
+  width: 100%;
   background-color: transparent;
 }
 .searchInput:focus, .searchInput:active {

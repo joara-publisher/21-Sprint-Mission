@@ -1,6 +1,6 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import Layout from './Layout';
-import ItemListPage from './Pages/ItemListPage';
+import ItemList from './pages/itemList';
 
 function Main() {
   
@@ -12,7 +12,7 @@ function Main() {
           <Route path="/" element={<Navigate to="/items" replace />} />
           
           
-          <Route path="/items" element={<ItemListPage />} />
+          <Route path="/items" element={<ItemList />} />
         </Route>
       </Routes>
     </BrowserRouter>
