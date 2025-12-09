@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components"
 
-export const ItemList = styled.ul`
+export const ProductListWrapper = styled.ul`
   display: flex;
   flex-wrap: wrap;
   

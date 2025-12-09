@@ -1,9 +1,9 @@
-import { Count, Img, Item, ItemList, Like, Name, Price } from "../styles/ProductListItemStyles";
+import { ProductListWrapper, Item, Img, Name, Price, Like, Count } from "../styles/ProductListItemStyles";
 import likeIcon from "../assets//productLike.svg"
 
 function ProductListItem ({list, category}) {
   return (
-    <ItemList variant={category}>  
+    <ProductListWrapper variant={category}>  
       {list.map((item) => (
         <Item key={item.id} variant={category}>
           <Img src={item.images} alt={`${item.name} 이미지`} />
@@ -17,7 +17,7 @@ function ProductListItem ({list, category}) {
           </Like>
         </Item>
       ))}
-    </ItemList>
+    </ProductListWrapper>
   )
 } 
 

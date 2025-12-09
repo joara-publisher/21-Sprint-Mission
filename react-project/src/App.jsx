@@ -1,7 +1,7 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import Layout from './Layout';
-import ItemList from './pages/itemList';
-import AddItem from './pages/addItem';
+import ItemList from './pages/ItemList';
+import AddItem from './pages/AddItem';
 import GlobalStyle from './styles/GlobalStyle';
 
 function Main() {
