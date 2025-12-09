@@ -1,7 +1,10 @@
-.dropdown {
+import styled from "styled-components";
+
+export const DropdownWrapper = styled.div`
   position: relative;
-}
-.button {
+`;
+
+export const Button = styled.button`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -13,8 +16,15 @@
   padding: 7px 20px;
   border: 1px solid var(--gray200);
   border-radius: 12px;
-}
-.option {
+  
+  @media (max-width: 767px) {
+    min-width: 42px;
+    justify-content: center;
+    padding: 0;
+  } 
+`;
+
+export const OptionList = styled.ul`
   display: none;
   position: absolute;
   width: 100%;
@@ -25,30 +35,26 @@
   background-color: var(--white);
   border: 1px solid var(--gray200);
   border-radius: 12px;
-}
-.option.active {
-  display: block;
-}
-.option li {
+  
+  &.active {
+    display: block;
+  }
+  
+  @media (max-width: 767px) {
+    right: 0;
+    min-width: 130px;
+  }
+`;
+
+export const Option = styled.li`
   min-height: 42px;
   display: flex;
   justify-content: center;
   align-items: center;
   border-bottom: 1px solid var(--gray200);
   cursor: pointer;
-}
-.option li:last-child {
-  border-bottom: none;
-} 
-
-@media (max-width: 767px) {
-  .button {
-    min-width: 42px;
-    justify-content: center;
-    padding: 0;
+  
+  &:last-child {
+    border-bottom: none;
   }
-  .option {
-    right: 0;
-    min-width: 130px;
-  }
-}
+`;

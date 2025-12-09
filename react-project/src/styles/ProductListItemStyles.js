@@ -1,0 +1,102 @@
+import styled, { css } from "styled-components"
+
+export const ItemList = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
+  
+  ${({ variant }) =>
+    variant === 'bestItemList' &&
+    css`
+      gap: 24px;
+      
+      @media (max-width: 1199px) {
+        gap: 10px;
+      }
+      
+      @media (max-width: 767px) {
+        gap: 0;
+      } 
+    `}
+  
+  ${({ variant }) =>
+    variant === 'itemList' &&
+    css`
+      gap: 40px 24px;
+      
+      @media (max-width: 1199px) {
+        gap: 40px 16px;
+      }
+      
+      @media (max-width: 767px) {
+         gap: 32px 8px;
+      } 
+    `}
+`;
+
+export const Item = styled.li`
+  width: calc((100% - (24px * 4)) / 5);
+  color: var(--gray800);
+  
+  ${({ variant }) =>
+    variant === 'bestItemList' &&
+    css`
+      width: calc((100% - (24px * 3)) / 4);
+      
+      @media (max-width: 1199px) {
+        width: calc((100% - 10px) / 2);
+      }
+      
+      @media (max-width: 767px) {
+        width: 100%;
+      }
+    `}
+    
+   ${({ variant }) =>
+    variant === 'itemList' &&
+    css`
+      @media (max-width: 1199px) {
+        width: calc((100% - (16px * 2)) / 3);
+      }
+      
+      @media (max-width: 767px) {
+        width: calc((100% - 8px) / 2);
+      }
+    `}
+`;
+
+export const Img = styled.img`
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  width: 100%;
+  min-height: 221px;
+  object-fit: cover;
+  margin-bottom: 16px;
+  border-radius: 16px;
+`;
+
+export const Name = styled.div`
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  margin-bottom: 6px;
+`;
+
+export const Price = styled.div`
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 26px;
+  margin-bottom: 6px;
+`;
+
+export const Like = styled.div`
+  img{
+    margin-right: 4px;
+  } 
+`;
+
+export const Count = styled.span`
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 18px;
+  color: var(--gray600);
+`;

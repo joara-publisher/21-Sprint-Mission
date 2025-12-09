@@ -1,4 +1,4 @@
-import styles from "./Pagination.module.css";
+import { PaginationWrap, PaginationList, PaginationItem, PaginationButton } from "../styles/PaginationStyles";
 import pageArrImg from "../assets/paginationArr.svg"
 
 function Pagination({currentPage, totalCount, pageSize, onChange}) {
@@ -17,34 +17,34 @@ function Pagination({currentPage, totalCount, pageSize, onChange}) {
   }
 
   return (
-    <div className={styles.pagination}>
-      <ul>
-        <li className={styles.prevButton}>
-          <button
+    <PaginationWrap>
+      <PaginationList>
+        <PaginationItem className='prevItem'>
+          <PaginationButton
             onClick={() => onChange(currentPage - 1)}
             disabled={currentPage === 1}
           >
           <img src={pageArrImg} alt="이전 버튼 이미지" />
-        </button>
-        </li>
+        </PaginationButton>
+        </PaginationItem>
       
         {pages.map((num) => (
-          <li key={num} className={num === currentPage ? styles.active : ''}>
-            <button onClick={() => onChange(num)}>
+          <PaginationItem key={num} className={num === currentPage ? 'active' : ''}>
+            <PaginationButton onClick={() => onChange(num)}>
               {num}
-            </button>
-          </li>
+            </PaginationButton>
+          </PaginationItem>
         ))}
-        <li className={styles.nextButton}>
-          <button
+        <PaginationItem className='nextItem'>
+          <PaginationButton
             onClick={() => onChange(currentPage + 1)}
             disabled={currentPage === totalPages}
           >
             <img src={pageArrImg} alt="다음 버튼 이미지" />
-          </button>
-        </li>
-      </ul>
-    </div>
+          </PaginationButton>
+        </PaginationItem>
+      </PaginationList>
+    </PaginationWrap>
   )
 }
 

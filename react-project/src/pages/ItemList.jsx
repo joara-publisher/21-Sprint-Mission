@@ -8,8 +8,8 @@ import Dropdown from '../components/Dropdown';
 import Search from "../components/Search";
 import useBestProducts from "../hooks/useBestProducts";
 import useProducts from "../hooks/useProducts";
-import ItemStyles from "./Item.module.css";
-import styles from "./ItemList.module.css";
+import { Container, ListTitle } from "../styles/ItemCommonStyles";
+import { ItemListBox, SearchSelectBox, TitleBox } from "../styles/ItemListStyles";
 
 function ItemList () {
   const [order, setOrder] = useState('recent');
@@ -51,32 +51,32 @@ function ItemList () {
   }
   
   return (
-    <div className={`${ItemStyles.item} itemList`}>
-        <div className={ItemStyles.container}>
-          
-        <section className={styles.itemListBox}>
-          <div className={styles.titleBox}>
-            <h2 className={ItemStyles.listTitle}>베스트 상품</h2>
-          </div>
+    <div className="item itemList">
+      <Container>
+        
+        <ItemListBox>
+          <TitleBox>
+            <ListTitle>베스트 상품</ListTitle>
+          </TitleBox>
           <ProductListItem list={bestList} category="bestItemList" />
-        </section>
+        </ItemListBox>
           
-        <section className={styles.itemListBox}>
-          <div className={styles.titleBox}>
-            <h2 className={ItemStyles.listTitle}>전체 상품</h2>
-            <Button classNames={`button defaultButton ${styles.moButton}`} onClick={goToAddItem}>상품 등록하기</Button>
-            <div className={styles.searchSelectBox}>
+        <ItemListBox>
+          <TitleBox>
+            <ListTitle>전체 상품</ListTitle>
+            <Button classNames="button defaultButton mobileButton" onClick={goToAddItem}>상품 등록하기</Button>
+            <SearchSelectBox>
               <Search changeKeyword={changeKeyword} />
-              <Button  classNames={`button defaultButton ${styles.pcButton}`} onClick={goToAddItem}>상품 등록하기</Button>
+              <Button  classNames="button defaultButton desktopButton" onClick={goToAddItem}>상품 등록하기</Button>
               <Dropdown isOpen={dropdownOpen} value={order} currentScreen={currentScreen} toggleDropdown={toggleDropdown} changeOrder={changeOrder} />
-            </div>
-          </div>
+            </SearchSelectBox>
+          </TitleBox>
           <ProductListItem list={list} category="itemList" />
           <Pagination currentPage={currentPage} totalCount={totalCount} pageSize={pageSize} onChange={changePage} />
-        </section>  
+        </ItemListBox>  
           
-        </div>
-      </div>
+      </Container>
+    </div>
   )
 }
 

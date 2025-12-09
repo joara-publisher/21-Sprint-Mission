@@ -1,7 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
-  @charset "utf-8";*,::after,::before,button{margin:0;padding:0}*,::after,::before,button,h1,h2,h3,h4,h5,h6,input,select,table,textarea{box-sizing:border-box}article,aside,canvas,details,figcaption,figure,footer,header,mark,menu,nav,section,summary{display:block}button,input,select,textarea{background-color:#fff;border-radius:0;-webkit-appearance:none}a:focus,button,fieldset,iframe,img{border:0}li{list-style:none}button,img,input,select,textarea{vertical-align:middle}img{max-width:100%;height:auto}address,em,optgroup{font-style:normal}button,label{cursor:pointer}label{position:relative}button{background:0 0}a{text-decoration:none;color:inherit}a:focus{outline:0}caption,legend{font-size:0;width:0;height:0;line-height:0;overflow:hidden;text-indent:-9999px}table{width:100%;border-spacing:0}input,select{border:none;outline:none}
+  @charset "utf-8";*,::after,::before,button{margin:0;padding:0}*,::after,::before,button,h1,h2,h3,h4,h5,h6,input,select,table,textarea{box-sizing:border-box}article,aside,canvas,details,figcaption,figure,footer,header,mark,menu,nav,section,summary{display:block}button,input,select,textarea{background-color:#fff;border-radius:0;-webkit-appearance:none}a:focus,button,fieldset,iframe,img{border:0}li{list-style:none}button,img,input,select,textarea{vertical-align:middle}img{max-width:100%;height:auto}address,em,optgroup{font-style:normal}button,label{cursor:pointer}label{position:relative}button{background:0 0}a{text-decoration:none;color:inherit}a:focus{outline:0}caption,legend{font-size:0;width:0;height:0;line-height:0;overflow:hidden;text-indent:-9999px}table{width:100%;border-spacing:0}input,select, textarea{border:none;outline:none}
   
   :root {
     --red: #F74747;
@@ -35,13 +35,23 @@ const GlobalStyle = createGlobalStyle`
     padding: 9.5px 20px;
     border-radius: 8px;
     background-color: var(--blue);
+    
+    &:disabled {
+      background-color: var(--gray400);
+    }
   }
   
-  .button.isActive {
-    background-color: var(--blue);
+  .desktopButton {
+    @media (max-width: 767px) {
+      display: none;
+    }
   }
-  .button.isNonActive {
-    background-color: var(--gray400);
+  
+  .mobileButton {
+    display: none;
+    @media (max-width: 767px) {
+      display: block;
+    }
   }
 `;
 

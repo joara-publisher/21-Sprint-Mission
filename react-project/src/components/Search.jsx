@@ -1,10 +1,10 @@
-import styles from "./Search.module.css";
+import { SearchInput, SearchInputBox } from "../styles/SearchStyles";
 
 function Search ({ changeKeyword }) {
   return (
-    <div className={styles.searchInputBox}>
-      <input className={styles.searchInput} type="text" placeholder="검색할 상품을 입력해주세요" onChange={changeKeyword} />
-    </div>
+    <SearchInputBox>
+      <SearchInput type="text" placeholder="검색할 상품을 입력해주세요" onChange={changeKeyword} />
+    </SearchInputBox>
   )
 }
 

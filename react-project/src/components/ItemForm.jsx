@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
+import styled from "styled-components";
 import FileInput from "./FileInput";
 import Tags from "./Tags";
+import { ListTitle } from "../styles/ItemCommonStyles";
+import { Label, Input, Textarea } from "../styles/FormCommonStyles";
 
 function ItemForm () {
   const [form, setForm] = useState({
@@ -52,29 +55,48 @@ function ItemForm () {
   
   useEffect(() => {
     formValidation();
+    console.log(isFormValid)
   }, [form])
   
   return (
-    <form action="" onSubmit={(e) => e.preventDefault()}>
-      <div className="formHeader">
-        <h2 className="itemTitle">상품 등록하기</h2>
-        <button className={`button defaultButton ${isFormValid ? 'isActive' : 'isNonActive'}`}>등록</button>
-      </div>
+    <Form action="" onSubmit={(e) => e.preventDefault()}>
+      <FormHeader>
+        <ListTitle>상품 등록하기</ListTitle>
+        <button className="button defaultButton" disabled={!isFormValid}>등록</button>
+      </FormHeader>
       
       <FileInput />
       
-      <label htmlFor="name">상품명</label>
-      <input type="text" name="name" id="name" onChange={handleChange} placeholder="상품명을 입력해주세요" />
+      <Label htmlFor="name">상품명</Label>
+      <Input type="text" name="name" id="name" onChange={handleChange} placeholder="상품명을 입력해주세요" />
       
-      <label htmlFor="description">상품 소개</label>
-      <textarea name="description" id="description" onChange={handleChange} placeholder="상품 소개를 입력해주세요"></textarea>
+      <Label htmlFor="description">상품 소개</Label>
+      <Textarea name="description" id="description" onChange={handleChange} placeholder="상품 소개를 입력해주세요" />
       
-      <label htmlFor="price">판매가격</label>
-      <input type="number" name="price" id="price" onChange={handleChange} placeholder="판매 가격을 입력해주세요" />
+      <Label htmlFor="price">판매가격</Label>
+      <Input type="number" name="price" id="price" onChange={handleChange} placeholder="판매 가격을 입력해주세요" />
       
       <Tags tags={form.tags} addTag={addTag} deleteTag={deleteTag} />
-    </form>
+    </Form>
   )
 }
 
 export default ItemForm;
+
+const Form = styled.form`
+  margin-bottom: 59px;
+  
+  @media (max-width: 1199px) {
+    margin-bottom: 78px;
+  }
+  @media (max-width: 1199px) {
+    margin-bottom: 70px;
+  }
+`;
+
+const FormHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+

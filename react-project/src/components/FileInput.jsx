@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-import FormErrorMessage from "./FormErrorMessage";
 import styled from "styled-components";
+import { Label } from "../styles/FormCommonStyles";
+import FormErrorMessage from "./FormErrorMessage";
 import placeholderImg from "../assets/plusIcon.svg";
 import imgDeleteIcon from "../assets/formDeleteIcon.svg";
 
@@ -38,6 +39,7 @@ function FileInput () {
   
   const deletePreview= () => {
     setFile('');
+    setPreview('');
     setISErrMsg(false);
     if(inputRef.current) {
       inputRef.current.value = ''
@@ -46,7 +48,7 @@ function FileInput () {
   
   return (
     <>
-      <label htmlFor="images">상품 이미지</label>
+      <Label htmlFor="images">상품 이미지</Label>
       <input type="file" name="images" id="images" onChange={addImage} ref={inputRef} hidden />
       <ImgWrap>
         <ImgPlaceholder onClick={clickAddImage}>
@@ -69,6 +71,10 @@ export default FileInput;
 const ImgWrap = styled.div`
   display: flex;
   gap: 24px;
+  
+  @media (max-width: 1199px) {
+    gap: 10px;
+  }
 `;
 
 const ImgPlaceholder = styled.div`
@@ -86,6 +92,15 @@ const ImgPlaceholder = styled.div`
   border-radius: 12px;
   background-color: var(--gray100);
   cursor: pointer;
+  
+  @media (max-width: 1199px) {
+    width: 168px;
+    height: 168px;
+  }
+  @media (max-width: 767px) {
+    width: calc((100vw - (24px * 2) - 10px) / 2);
+    height: calc((100vw - (24px * 2) - 10px) / 2);
+  } 
 `;
 
 const ImgPreview = styled.div`
@@ -97,12 +112,21 @@ const ImgPreview = styled.div`
   background-position: center;
   border-radius: 12px;
   
+  @media (max-width: 1199px) {
+    width: 168px;
+    height: 168px;
+  }
+  @media (max-width: 767px) {
+    width: calc((100vw - (24px * 2) - 10px) / 2);
+    height: calc((100vw - (24px * 2) - 10px) / 2);
+  }
+  
   button {
     position: absolute;
     width: 22px;
     height: 24px;
     top: 12px;
-    left: 248px;
+    right: 12px;
 
   }
 `;

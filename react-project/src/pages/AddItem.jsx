@@ -1,12 +1,12 @@
 import ItemForm from "../components/ItemForm";
-import ItemStyles from "./Item.module.css";
+import { Container } from "../styles/ItemCommonStyles";
 
 function AddItem () {
   return (
-    <div className={`${ItemStyles.item} addItem`}>
-      <div className={ItemStyles.container}>
+    <div className="item addItem">
+      <Container>
         <ItemForm />
-      </div>
+      </Container>
     </div>
   )
 }

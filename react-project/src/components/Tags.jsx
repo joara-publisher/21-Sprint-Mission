@@ -1,7 +1,8 @@
 import {useRef, useState } from "react";
 import styled from "styled-components";
-import tagDeleteIcon from "../assets/formDeleteIcon.svg";
+import { Input, Label } from "../styles/FormCommonStyles";
 import FormErrorMessage from "./FormErrorMessage";
+import tagDeleteIcon from "../assets/formDeleteIcon.svg";
 
 function Tags ({ tags, addTag, deleteTag }) {
   const [iserrMsg, setISErrMsg] = useState(false);
@@ -29,8 +30,8 @@ function Tags ({ tags, addTag, deleteTag }) {
   
   return (
     <>
-      <label htmlFor="tags">태그</label>
-      <input type="text" name="tags" id="tags" placeholder="태그를 입력해주세요" onChange={inputTag} onKeyDown={handleAddTag} ref={inputRef} />
+      <Label htmlFor="tags">태그</Label>
+      <Input type="text" name="tags" id="tags" placeholder="태그를 입력해주세요" onChange={inputTag} onKeyDown={handleAddTag} ref={inputRef} />
       <TagList>
         {tags.map((tag, index) => (
           <Tag key={index}>
@@ -59,6 +60,7 @@ const Tag = styled.li`
   font-weight: 400;
   line-height: 26px;
   color: var(--gray800);
+  margin-top: 14px;
   padding: 5px 12px 5px 16px;
   background-color: var(--gray100);
   border-radius: 26px;

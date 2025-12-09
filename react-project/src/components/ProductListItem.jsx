@@ -1,23 +1,23 @@
-import styles from "./ProductListItem.module.css";
+import { Count, Img, Item, ItemList, Like, Name, Price } from "../styles/ProductListItemStyles";
 import likeIcon from "../assets//productLike.svg"
 
 function ProductListItem ({list, category}) {
   return (
-    <ul className={styles[category]}>  
+    <ItemList variant={category}>  
       {list.map((item) => (
-        <li key={item.id} className={styles.item}>
-          <img className={styles.img} src={item.images} alt={`${item.name} 이미지`} />
-          <div className={styles.title}>{item.name}</div>
-          <div className={styles.price}>{item.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}원</div>
-          <div className={styles.like}>
+        <Item key={item.id} variant={category}>
+          <Img src={item.images} alt={`${item.name} 이미지`} />
+          <Name>{item.name}</Name>
+          <Price>{item.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}원</Price>
+          <Like>
             <button>
               <img src={likeIcon} alt="하트 아이콘" />
-              <span className={styles.count}>{item.favoriteCount}</span>
+              <Count>{item.favoriteCount}</Count>
             </button>
-          </div>
-        </li>
+          </Like>
+        </Item>
       ))}
-    </ul>
+    </ItemList>
   )
 } 
 
