@@ -55,7 +55,6 @@ function ItemForm () {
   
   useEffect(() => {
     formValidation();
-    console.log(isFormValid)
   }, [form])
   
   return (

@@ -73,7 +73,7 @@ export const MenuItemLink = styled(NavLink)`
   color: #4B5563;
   padding: 0 15px;
   
-  &,active {
+  &.active {
     color: var(--blue);
   }
   

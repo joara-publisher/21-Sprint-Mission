@@ -17,17 +17,15 @@ function Nav() {
           <MenuList>
             <li>
               <MenuItemLink
-                to="/"
-                className={({ isActive }) => isActive ? 'active' : undefined
-                }
-              >
+                to="/board"
+                className={location.pathname === "/board" ? 'active' : ''}>
                 자유게시판
               </MenuItemLink>
             </li>
             <li>
               <MenuItemLink
                 to="/items"
-                className={location.pathname === "/items" || location.pathname === "/additem" ? 'active' : undefined}>
+                className={location.pathname === "/items" || location.pathname === "/additem" ? 'active' : ''}>
                 중고마켓
               </MenuItemLink>
             </li>
