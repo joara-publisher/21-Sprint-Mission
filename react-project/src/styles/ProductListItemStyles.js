@@ -1,67 +1,67 @@
 import styled, { css } from "styled-components"
 
+const gapStyles = {
+  bestItemList: css`
+    gap: 24px;
+
+    @media (max-width: 1199px) {
+      gap: 10px;
+    }
+
+    @media (max-width: 767px) {
+      gap: 0;
+    }
+  `,
+  itemList: css`
+    gap: 40px 24px;
+
+    @media (max-width: 1199px) {
+      gap: 40px 16px;
+    }
+
+    @media (max-width: 767px) {
+      gap: 32px 8px;
+    }
+  `,
+};
+
 export const ProductListWrapper = styled.ul`
   display: flex;
   flex-wrap: wrap;
   
-  ${({ variant }) =>
-    variant === 'bestItemList' &&
-    css`
-      gap: 24px;
-      
-      @media (max-width: 1199px) {
-        gap: 10px;
-      }
-      
-      @media (max-width: 767px) {
-        gap: 0;
-      } 
-    `}
-  
-  ${({ variant }) =>
-    variant === 'itemList' &&
-    css`
-      gap: 40px 24px;
-      
-      @media (max-width: 1199px) {
-        gap: 40px 16px;
-      }
-      
-      @media (max-width: 767px) {
-         gap: 32px 8px;
-      } 
-    `}
+  /* variant 스타일 자동 적용 */
+  ${({ variant }) => gapStyles[variant]}
 `;
+
+const ItemGapStyles = {
+  bestItemList: css`
+    width: calc((100% - (24px * 3)) / 4);
+      
+    @media (max-width: 1199px) {
+      width: calc((100% - 10px) / 2);
+    }
+    
+    @media (max-width: 767px) {
+      width: 100%;
+    }
+  `,
+  itemList: css`
+    @media (max-width: 1199px) {
+      width: calc((100% - (16px * 2)) / 3);
+    }
+    
+    @media (max-width: 767px) {
+      width: calc((100% - 8px) / 2);
+    }
+  `,
+};
 
 export const Item = styled.li`
   width: calc((100% - (24px * 4)) / 5);
   color: var(--gray800);
   
-  ${({ variant }) =>
-    variant === 'bestItemList' &&
-    css`
-      width: calc((100% - (24px * 3)) / 4);
-      
-      @media (max-width: 1199px) {
-        width: calc((100% - 10px) / 2);
-      }
-      
-      @media (max-width: 767px) {
-        width: 100%;
-      }
-    `}
-    
-   ${({ variant }) =>
-    variant === 'itemList' &&
-    css`
-      @media (max-width: 1199px) {
-        width: calc((100% - (16px * 2)) / 3);
-      }
-      
-      @media (max-width: 767px) {
-        width: calc((100% - 8px) / 2);
-      }
-    `}
+  /* variant 스타일 자동 적용 */
+  ${({ variant }) => ItemGapStyles[variant]}
 `;
 
 export const Img = styled.img`
