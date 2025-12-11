@@ -8,12 +8,12 @@ import imgDeleteIcon from "../assets/formDeleteIcon.svg";
 function FileInput () {
   const [file, setFile] = useState('');
   const [preview, setPreview] = useState('');
-  const [iserrMsg, setISErrMsg] = useState(false);
+  const [iserrMsg, setIsErrMsg] = useState(false);
   const inputRef = useRef();
   
   const clickAddImage = () => {
     if(file) {
-      setISErrMsg(true);
+      setIsErrMsg(true);
       return;
     }
     
@@ -40,7 +40,7 @@ function FileInput () {
   const deletePreview= () => {
     setFile('');
     setPreview('');
-    setISErrMsg(false);
+    setIsErrMsg(false);
     if(inputRef.current) {
       inputRef.current.value = ''
     }

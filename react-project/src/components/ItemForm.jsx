@@ -88,7 +88,7 @@ const Form = styled.form`
   @media (max-width: 1199px) {
     margin-bottom: 78px;
   }
-  @media (max-width: 1199px) {
+  @media (max-width: 767px) {
     margin-bottom: 70px;
   }
 `;

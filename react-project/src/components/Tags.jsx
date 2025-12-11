@@ -5,18 +5,25 @@ import FormErrorMessage from "./FormErrorMessage";
 import tagDeleteIcon from "../assets/formDeleteIcon.svg";
 
 function Tags ({ tags, addTag, deleteTag }) {
-  const [iserrMsg, setISErrMsg] = useState(false);
+  const [iserrMsg, setIsErrMsg] = useState(false);
   const inputRef = useRef();
   
   const inputTag = () => {
-    if(iserrMsg) setISErrMsg(false);
+    if(iserrMsg) setIsErrMsg(false);
   }
   
   const handleAddTag = (e) => {
     const value = e.target.value.trim();
-    if(value !== '' && e.key === 'Enter') {
+  
+    // 미완성 한글(초성/중성) Enter 입력 막기
+    if (e.key === "Enter" && !/^[가-힣a-zA-Z0-9]+$/.test(value)) {
+      return;
+    }
+    
+    // e.nativeEvent.isComposing 는 조합중일때 true 아닐때 false
+    if(e.key === 'Enter' && !e.nativeEvent.isComposing) {
       if(tags.includes(value)) {
-        setISErrMsg(true);
+        setIsErrMsg(true);
       } else {
         addTag(value);
       }
