@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import FileInput from "./FileInput";
 import Tags from "./Tags";
-import { ListTitle } from "../styles/ItemCommonStyles";
+import { ListTitle } from "../styles/ProductCommonStyles";
 import { Label, Input, Textarea } from "../styles/FormCommonStyles";
 
-function ItemForm () {
+function ProductForm () {
   const [form, setForm] = useState({
     images: [],
     name: '',
@@ -80,7 +80,7 @@ function ItemForm () {
   )
 }
 
-export default ItemForm;
+export default ProductForm;
 
 const Form = styled.form`
   margin-bottom: 59px;

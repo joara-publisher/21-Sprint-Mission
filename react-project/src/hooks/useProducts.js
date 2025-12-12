@@ -1,5 +1,5 @@
-import axios from "../utils/axios";
 import { useEffect, useState } from "react";
+import axios from "../utils/axios";
 
 function useProducts (order, keyword, currentPage, pageSize) {
   const [list, setList] = useState([]);

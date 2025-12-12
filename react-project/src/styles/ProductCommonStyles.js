@@ -16,3 +16,20 @@ export const ListTitle = styled.div`
   line-height: 32px;
   color: var(--gray900);
 `;
+
+export const TagList = styled.ul`
+  display: flex;
+`;
+
+export const Tag = styled.li`
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 26px;
+  color: var(--gray800);
+  padding: 5px 12px 5px 16px;
+  background-color: var(--gray100);
+  border-radius: 26px;
+`;

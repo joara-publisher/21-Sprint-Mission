@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ItemListBox = styled.section`
+export const ProductListBox = styled.section`
   & + & {
     margin-top: 40px;
     @media (max-width: 767px) {

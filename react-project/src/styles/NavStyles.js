@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
+import profileDefaultImg from "../assets/profileDefaultImg.png";
 
 export const Header = styled.header`
   position: sticky;
@@ -90,7 +91,7 @@ export const MyProfile = styled.div`
 export const ProfileImg = styled.button`
   width: 40px;
   height: 40px;
-  background-image: url('../assets/profileDefaultImg.png');
+  background-image: url(${profileDefaultImg});
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;

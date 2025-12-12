@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components"
+import { Link } from 'react-router-dom';
 
 const gapStyles = {
   bestItemList: css`
@@ -56,7 +57,7 @@ const ItemGapStyles = {
   `,
 };
 
-export const Item = styled.li`
+export const ListItem = styled.li`
   width: calc((100% - (24px * 4)) / 5);
   color: var(--gray800);
   
@@ -64,7 +65,13 @@ export const Item = styled.li`
   ${({ variant }) => ItemGapStyles[variant]}
 `;
 
-export const Img = styled.img`
+export const ListItemLink = styled(Link)`
+  display: block;
+  width: 100%;
+  height: 100%;
+`;
+
+export const ListItemImg = styled.img`
   aspect-ratio: 1 / 1;
   object-fit: cover;
   width: 100%;
@@ -74,27 +81,32 @@ export const Img = styled.img`
   border-radius: 16px;
 `;
 
-export const Name = styled.div`
+export const ListItemName = styled.div`
   font-weight: 500;
   font-size: 14px;
   line-height: 24px;
   margin-bottom: 6px;
 `;
 
-export const Price = styled.div`
+export const ListItemPrice = styled.div`
   font-weight: 700;
   font-size: 16px;
   line-height: 26px;
   margin-bottom: 6px;
 `;
 
-export const Like = styled.div`
-  img{
-    margin-right: 4px;
-  } 
+export const ListItemFavoritButton = styled.button`
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
 `;
 
-export const Count = styled.span`
+export const FavoritButtonImg = styled.img`
+  width: 16px;
+  height: 16px;
+`;
+
+export const FavoritButtonCount = styled.span`
   font-weight: 500;
   font-size: 12px;
   line-height: 18px;

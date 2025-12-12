@@ -8,10 +8,10 @@ import Dropdown from '../components/Dropdown';
 import Search from "../components/Search";
 import useBestProducts from "../hooks/useBestProducts";
 import useProducts from "../hooks/useProducts";
-import { Container, ListTitle } from "../styles/ItemCommonStyles";
-import { ItemListBox, SearchSelectBox, TitleBox } from "../styles/ItemListStyles";
+import { Container, ListTitle } from "../styles/ProductCommonStyles";
+import { ProductListBox, SearchSelectBox, TitleBox } from "../styles/ProductListStyles";
 
-function ItemList () {
+function ProductList () {
   const [order, setOrder] = useState('recent');
   const [searchParams, setSearchParams] = useSearchParams();
   const initKeyword = searchParams.get('keyword');
@@ -54,14 +54,14 @@ function ItemList () {
     <div className="item itemList">
       <Container>
         
-        <ItemListBox>
+        <ProductListBox>
           <TitleBox>
             <ListTitle>베스트 상품</ListTitle>
           </TitleBox>
           <ProductListItem list={bestList} category="bestItemList" />
-        </ItemListBox>
+        </ProductListBox>
           
-        <ItemListBox>
+        <ProductListBox>
           <TitleBox>
             <ListTitle>전체 상품</ListTitle>
             <Button classNames="button defaultButton mobileButton" onClick={goToAddItem}>상품 등록하기</Button>
@@ -73,11 +73,11 @@ function ItemList () {
           </TitleBox>
           <ProductListItem list={list} category="itemList" />
           <Pagination currentPage={currentPage} totalCount={totalCount} pageSize={pageSize} onChange={changePage} />
-        </ItemListBox>  
+        </ProductListBox>  
           
       </Container>
     </div>
   )
 }
 
-export default ItemList;
+export default ProductList;

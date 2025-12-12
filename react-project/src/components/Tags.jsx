@@ -1,8 +1,9 @@
 import {useRef, useState } from "react";
-import styled from "styled-components";
 import { Input, Label } from "../styles/FormCommonStyles";
 import FormErrorMessage from "./FormErrorMessage";
 import tagDeleteIcon from "../assets/formDeleteIcon.svg";
+import { TagList as commonTagList, Tag } from "../styles/ProductCommonStyles";
+import styled from "styled-components";
 
 function Tags ({ tags, addTag, deleteTag }) {
   const [iserrMsg, setIsErrMsg] = useState(false);
@@ -39,14 +40,14 @@ function Tags ({ tags, addTag, deleteTag }) {
     <>
       <Label htmlFor="tags">태그</Label>
       <Input type="text" name="tags" id="tags" placeholder="태그를 입력해주세요" onChange={inputTag} onKeyDown={handleAddTag} ref={inputRef} />
-      <TagList>
+      <LocalTag>
         {tags.map((tag, index) => (
           <Tag key={index}>
             #{tag}
             <button><img src={tagDeleteIcon} alt="태그 삭제" onClick={() => handleDeleteTag(index)} /></button>
           </Tag>
         ))}
-      </TagList>
+      </LocalTag>
       {iserrMsg && <FormErrorMessage>*같은 태그가 이미 등록되어 있습니다.</FormErrorMessage>}
     </>
   )
@@ -54,22 +55,7 @@ function Tags ({ tags, addTag, deleteTag }) {
 
 export default Tags;
 
-const TagList = styled.ul`
-  display: flex;
+const LocalTag = styled(commonTagList)`
   gap: 12px;
-`;
-
-const Tag = styled.li`
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 26px;
-  color: var(--gray800);
   margin-top: 14px;
-  padding: 5px 12px 5px 16px;
-  background-color: var(--gray100);
-  border-radius: 26px;
 `;
-
