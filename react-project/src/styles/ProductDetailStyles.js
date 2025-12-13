@@ -80,9 +80,12 @@ export const DetailOwnerWrapper = styled.div`
 export const DetailOwnerImg = styled.img`
   width: 40px;
   height: 40px;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 100%;
 `;
 
-export const DetailNicknameWrapper = styled.div`
+export const DetailNicknameWrap = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2px;

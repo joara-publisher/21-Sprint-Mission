@@ -1,7 +1,7 @@
 import likeIcon from "../assets/productLike.svg";
 import profileDefaultImg from "../assets/profileDefaultImg.png";
-import { Tag, TagList } from "../styles/ProductCommonStyles";
-import { DetailWrap, DetailDate, DetailDesc, DetailFavoritButton, DetailFavoritCount, DetailFavoritImg, DetailImg, DetailInfoList, DetailInfoTitle, DetailName, DetailNicknameWrapper, DetailOwnerImg, DetailOwnerNickname, DetailOwnerWrapper, DetailPrice, DetailTxtBottom, DetailTxtTop, DetailTxtWrap, LocalTagList } from "../styles/ProductDetailStyles";
+import { Tag } from "../styles/ProductCommonStyles";
+import { DetailWrap, DetailDate, DetailDesc, DetailFavoritButton, DetailFavoritCount, DetailFavoritImg, DetailImg, DetailInfoList, DetailInfoTitle, DetailName, DetailNicknameWrap, DetailOwnerImg, DetailOwnerNickname, DetailOwnerWrapper, DetailPrice, DetailTxtBottom, DetailTxtTop, DetailTxtWrap, LocalTagList } from "../styles/ProductDetailStyles";
 
 function DetailInfo ({ item }) {
   return (
@@ -25,10 +25,10 @@ function DetailInfo ({ item }) {
           <DetailTxtBottom>
             <DetailOwnerWrapper>
               <DetailOwnerImg src={profileDefaultImg} alt="" />
-              <DetailNicknameWrapper>
+              <DetailNicknameWrap>
                 <DetailOwnerNickname>{item.ownerNickname}</DetailOwnerNickname>
                 <DetailDate>{(new Date(item.updatedAt)).toLocaleDateString().slice(0, -1)}</DetailDate>
-              </DetailNicknameWrapper>
+              </DetailNicknameWrap>
             </DetailOwnerWrapper>
             <DetailFavoritButton>
               <DetailFavoritImg src={likeIcon} alt="하트 아이콘" />

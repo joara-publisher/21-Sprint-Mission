@@ -4,6 +4,7 @@ import FileInput from "./FileInput";
 import Tags from "./Tags";
 import { ListTitle } from "../styles/ProductCommonStyles";
 import { Label, Input, Textarea } from "../styles/FormCommonStyles";
+import Button from './Button';
 
 function ProductForm () {
   const [form, setForm] = useState({
@@ -61,7 +62,7 @@ function ProductForm () {
     <Form action="" onSubmit={(e) => e.preventDefault()}>
       <FormHeader>
         <ListTitle>상품 등록하기</ListTitle>
-        <button className="button defaultButton" disabled={!isFormValid}>등록</button>
+        <Button classNames="button defaultButton" disabled={!isFormValid}>등록</Button>
       </FormHeader>
       
       <FileInput />

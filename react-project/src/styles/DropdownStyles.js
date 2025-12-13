@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const DropdownWrapper = styled.div`
   position: relative;
+  color: var(--gray800);
 `;
 
 export const Button = styled.button`
