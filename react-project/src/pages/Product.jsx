@@ -6,7 +6,7 @@ import ProductInquirySection from "../components/ProductInquirySection";
 import Button from './../components/Button';
 import { Container } from "../styles/ProductCommonStyles";
 import backButtonIcon from "../assets/backIcon.svg"
-import { ButtonWrap } from "../styles/ProductStyles";
+import { ButtonWrap, Divider } from "../styles/ProductStyles";
 
 function Product () {
   const { id } = useParams();
@@ -25,9 +25,10 @@ function Product () {
     <div className="item itemDetails">
       <Container>
         <ProductDetail item={item} />
+        <Divider />
         <ProductInquirySection list={list} />
         <ButtonWrap>
-          <Button className="button defaultButton" variant="rounded" withIcon={true} paddingVarian="11px 39.5px" onClick={goToProductList}>
+          <Button className="button defaultButton" variant="rounded" withIcon={true} fontSizeVariant="18px" paddingVarian="11px 39.5px" onClick={goToProductList}>
             목록으로 돌아가기
             <img src={backButtonIcon} alt="목록으로 돌아가기 아이콘" />
           </Button>

@@ -6,11 +6,10 @@ export const DefaultButton = styled.button`
   justify-content: center;
   gap: ${({ $withIcon }) => ($withIcon ? "8px" : "0")};
 
-  font-size: 16px;
+  font-size: ${({$fontSizeVariant}) => $fontSizeVariant ? $fontSizeVariant : "16px"};
   font-weight: 600;
-  line-height: 1.5;
   padding: ${({$paddingVariant}) => 
-    $paddingVariant ? $paddingVariant : "9.5px 20px"};
+    $paddingVariant ? $paddingVariant : "11px 20px"};
 
   color: var(--gray100);
   background-color: var(--blue);

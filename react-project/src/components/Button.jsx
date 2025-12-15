@@ -7,6 +7,7 @@ function Button({
   disabled = false,
   variant = "primary",
   withIcon = false,
+  fontSizeVariant,
   paddingVariant,
   desktopOnly,
   mobileOnly,
@@ -17,6 +18,7 @@ function Button({
       onClick={onClick}
       disabled={disabled}
       $variant={variant}
+      $fontSizeVariant={fontSizeVariant}
       $paddingVariant={paddingVariant}
       $withIcon={withIcon}
       $desktopOnly={desktopOnly}

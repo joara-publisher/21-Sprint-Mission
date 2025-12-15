@@ -39,6 +39,9 @@ export const Left = styled.div`
 
 export const Logo = styled(NavLink)`
   width: 153px;
+  @media (max-width: 767px) {
+    width: 81px;
+  }
 `;
 
 export const LogoDesktopImg = styled.img`
@@ -52,7 +55,6 @@ export const LogoMobileImg = styled.img`
   
   @media (max-width: 767px) {
     display: block; 
-    width: 81px;
   }
 `;
 

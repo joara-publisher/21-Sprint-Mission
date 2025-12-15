@@ -1,4 +1,4 @@
-import { CommentMenuButton, CommentContent, CommentDate, CommentProfileImg, CommentItem, CommentNickname, CommentNicknameWrap, CommentProfileWrap, CommentOptionsMenu, CommentMenu, CommentOption, InquiryEmptyWrap, InquiryEmpty, CommentWrap, CommentTextarea, CommentUpdateMenu } from "../styles/ProductInquiryStyles";
+import { CommentMenuButton, CommentContent, CommentDate, CommentProfileImg, CommentItem, CommentNickname, CommentNicknameWrap, CommentProfileWrap, CommentOptionsMenu, CommentMenu, CommentOption, InquiryEmptyWrap, InquiryEmpty, CommentWrap, CommentTextarea, CommentUpdateMenu, InquiryEmptyImg } from "../styles/ProductInquiryStyles";
 import profileDefaultImg from "../assets/profileDefaultImg.png";
 import inquiryEmptyImg from "../assets/inquiryEmpty.png";
 import { useState } from "react";
@@ -91,7 +91,7 @@ function ProductInquiryList ({ list }) {
       :  
       <InquiryEmptyWrap>
         <InquiryEmpty>
-          <img src={inquiryEmptyImg} alt="문의가 없을때 이미지" />
+          <InquiryEmptyImg src={inquiryEmptyImg} alt="문의가 없을때 이미지" />
           아직 문의가 없어요
         </InquiryEmpty>
       </InquiryEmptyWrap>

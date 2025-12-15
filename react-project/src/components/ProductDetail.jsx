@@ -1,9 +1,9 @@
 import likeIcon from "../assets/productLike.svg";
 import profileDefaultImg from "../assets/profileDefaultImg.png";
-import { Tag } from "../styles/ProductCommonStyles";
 import { DetailWrap, DetailDate, DetailDesc, DetailFavoritButton, DetailFavoritCount, DetailFavoritImg, DetailImg, DetailInfoList, DetailInfoTitle, DetailName, DetailNicknameWrap, DetailOwnerImg, DetailOwnerNickname, DetailOwnerWrapper, DetailPrice, DetailTxtBottom, DetailTxtTop, DetailTxtWrap, LocalTagList } from "../styles/ProductDetailStyles";
+import { Tag } from "../styles/ProductCommonStyles";
 
-function DetailInfo ({ item }) {
+function ProductDetail ({ item }) {
   return (
     <DetailWrap>
       <DetailImg src={item.images[0]} alt="제품 이미지" />
@@ -40,4 +40,4 @@ function DetailInfo ({ item }) {
   )
 }
 
-export default DetailInfo;
+export default ProductDetail;

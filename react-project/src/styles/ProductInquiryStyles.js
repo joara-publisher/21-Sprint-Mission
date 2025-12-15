@@ -6,7 +6,6 @@ export const InquirySectionWrap = styled.div`
   display: flex;
   flex-direction: column;
   gap: 24px;
-  margin-top: 40px;
 `;
 
 export const InquiryForm = styled.form`
@@ -19,11 +18,21 @@ export const InquiryFormTitle = styled.div`
   font-size: 16px;
   line-height: 26px;
   margin-bottom: 9px;
+  
+  @media (max-width: 767px) {
+    margin-bottom: 16px;
+  }
 `;
 
 export const InquiryFormTextarea = styled(Textarea)`
   height: 104px;
   margin-bottom: 16px;
+  
+  @media (max-width: 767px) {
+    height: 129px;
+    font-size: 14px;
+    line-height: 24px;
+  }
 `;
 
 export const InquiryFormButton = styled(DefaultButton)`
@@ -32,6 +41,13 @@ export const InquiryFormButton = styled(DefaultButton)`
 
 export const CommentWrap = styled.div`
   margin-bottom: 64px;
+  
+  @media (max-width: 1199px) {
+    margin-bottom: 47px;
+  }
+  @media (max-width: 767px) {
+    margin-bottom: 40px;
+  }
 `;
 
 export const CommentItem = styled.li`
@@ -42,11 +58,27 @@ export const CommentItem = styled.li`
   & + & {
     margin-top: 24px;
   }
+  
+  @media (max-width: 1199px) {
+    padding-bottom: 9px;
+  }
+  
+  @media (max-width: 767px) {
+    padding-bottom: 12px;
+    & + & {
+      margin-top: 16px;
+    }
+  }
 `;
 
 export const CommentTextarea = styled(Textarea)`
   height: 80px;
   margin-bottom: 23px;
+  
+  @media (max-width: 1199px) {
+    font-size: 14px;
+    line-height: 24px;
+  }
 `;
 
 export const CommentContent = styled.p`
@@ -91,7 +123,6 @@ export const CommentDate = styled.span`
 `;
 
 export const CommentMenu = styled.div`
-  z-index: 1;
   position: absolute;
   top: 0;
   right: 0;
@@ -104,6 +135,7 @@ export const CommentMenuButton = styled.button`
 `;
 
 export const CommentOptionsMenu = styled.ul`
+  z-index: 1;
   display: none;
   position: absolute;
   right: 0;
@@ -122,7 +154,11 @@ export const CommentOptionsMenu = styled.ul`
   
   @media (max-width: 767px) {
     right: 0;
-    min-width: 130px;
+    width: 102px;
+    font-size: 14px;
+    line-height: 24px;
+    margin-top: 11px;
+    border-radius: 8px;
   }
 `;
 
@@ -133,7 +169,7 @@ export const CommentUpdateMenu = styled.div`
   display: flex;
   gap: 4px;
   padding: 2.5px 0;
-  margin-top: -3.5px;
+  margin-top: -4.75px;
 `;
 
 export const CommentOption = styled.li`
@@ -146,6 +182,10 @@ export const CommentOption = styled.li`
   
   &:last-child {
     border-bottom: none;
+  }
+  
+  @media (max-width: 767px) {
+    min-height: 45px;
   }
 `;
 
@@ -163,3 +203,9 @@ export const InquiryEmpty = styled.div`
   flex-direction: column;
   gap: 8px;
 `;
+
+export const InquiryEmptyImg = styled.img`
+  @media (max-width: 1199px) {
+    width: 140px;
+  }
+`

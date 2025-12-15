@@ -5,6 +5,14 @@ export const DetailWrap = styled.div`
   display: flex;
   gap: 24px;
   padding: 5px 0;
+  
+  @media (max-width: 1199px) {
+    gap: 16px;
+    padding: 0;
+  }
+  @media (max-width: 767px) {
+    flex-direction: column;
+  }
 `;
 
 export const DetailImg = styled.img`
@@ -13,6 +21,18 @@ export const DetailImg = styled.img`
   aspect-ratio: 1 / 1;
   object-fit: cover;
   border-radius: 28.59px;
+  
+  @media (max-width: 1199px) {
+    width: 340px;
+    height: 340px;
+    border-radius: 20px;
+  }
+  
+  @media (max-width: 767px) {
+    width: 100vw;
+    height: auto;
+    border-radius: 12px;
+  }
 `;
 
 export const DetailTxtWrap = styled.div`
@@ -30,17 +50,41 @@ export const DetailName = styled.h2`
   font-size: 24px;
   line-height: 32px;
   margin-bottom: 16px;
+  
+  @media (max-width: 1199px) {
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
+  
+  @media (max-width: 767px) {
+    font-size: 16px;
+    line-height: 26px;
+  }
 `;
 
 export const DetailPrice = styled.p`
   font-weight: 600;
   font-size: 40px;
   line-height: 100%;
+  
+  @media (max-width: 1199px) {
+    font-size: 32px;
+    line-height: 42px;
+  }
+  
+  @media (max-width: 767px) {
+    font-size: 24px;
+    line-height: 32px;
+  }
 `;
 
 export const DetailInfoList = styled.dl`
   color: var(--gray600);
   padding-top: 24px;
+  
+  @media (max-width: 1199px) {
+    padding-top: 16px;
+  }
 `;
 
 export const DetailInfoTitle = styled.dt`
@@ -48,6 +92,12 @@ export const DetailInfoTitle = styled.dt`
   font-size: 16px;
   line-height: 26px;
   margin-bottom: 16px;
+  
+  @media (max-width: 1199px) {
+    font-size: 14px;
+    line-height: 24px;
+    margin-bottom: 8px;
+  }
 `;
 
 export const DetailDesc = styled.dd`
@@ -69,6 +119,10 @@ export const DetailTxtBottom = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-top: 62px;
+  
+  @media (max-width: 1199px) {
+    margin-top: 40px;
+  }
 `;
 
 export const DetailOwnerWrapper = styled.div`
@@ -128,6 +182,11 @@ export const DetailFavoritButton = styled.button`
 export const DetailFavoritImg = styled.img`
   width: 32px;
   height: 32px;
+  
+  @media (max-width: 1199px) {
+    width: 24px;
+    height: 24px;
+  }
 `;
 
 export const DetailFavoritCount = styled.span`
