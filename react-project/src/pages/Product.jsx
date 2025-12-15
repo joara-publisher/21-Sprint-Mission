@@ -1,14 +1,22 @@
-import { useParams } from "react-router-dom";
-import { Container } from "../styles/ProductCommonStyles";
+import { useNavigate, useParams } from "react-router-dom";
 import useProduct from "../hooks/useProduct";
+import useProductInquiry from "../hooks/useProductInquiry";
 import ProductDetail from "../components/ProductDetail";
 import ProductInquirySection from "../components/ProductInquirySection";
-import useProductInquiry from "../hooks/useProductInquiry";
+import Button from './../components/Button';
+import { Container } from "../styles/ProductCommonStyles";
+import backButtonIcon from "../assets/backIcon.svg"
+import { ButtonWrap } from "../styles/ProductStyles";
 
 function Product () {
   const { id } = useParams();
   const { item } = useProduct(id);
   const { list } = useProductInquiry(id);
+  const navigate = useNavigate();
+  
+  const goToProductList = () => {
+    navigate('/items');
+  }
 
   // 로딩 처리
   if (!item) return <div>Loading...</div>;
@@ -18,6 +26,12 @@ function Product () {
       <Container>
         <ProductDetail item={item} />
         <ProductInquirySection list={list} />
+        <ButtonWrap>
+          <Button className="button defaultButton" variant="rounded" withIcon={true} paddingVarian="11px 39.5px" onClick={goToProductList}>
+            목록으로 돌아가기
+            <img src={backButtonIcon} alt="목록으로 돌아가기 아이콘" />
+          </Button>
+        </ButtonWrap>
       </Container>
     </div>
   )

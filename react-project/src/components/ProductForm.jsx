@@ -62,7 +62,7 @@ function ProductForm () {
     <Form action="" onSubmit={(e) => e.preventDefault()}>
       <FormHeader>
         <ListTitle>상품 등록하기</ListTitle>
-        <Button classNames="button defaultButton" disabled={!isFormValid}>등록</Button>
+        <Button className="button defaultButton" disabled={!isFormValid}>등록</Button>
       </FormHeader>
       
       <FileInput />

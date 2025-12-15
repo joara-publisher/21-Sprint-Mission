@@ -33,7 +33,7 @@ function Nav() {
           </MenuList>
         </Left>
         <div>
-          {/* <Button classNames="button defaultButton" onClick={goToLogin}>로그인</Button> */}
+          {/* <Button className="button defaultButton" onClick={goToLogin}>로그인</Button> */}
           <MyProfile>
             <ProfileImg />
           </MyProfile>

@@ -1,6 +1,8 @@
-import { useState } from "react";
-import { CommentMenuButton, CommentContent, CommentDate, CommentProfileImg, CommentItem, CommentNickname, CommentNicknameWrap, CommentProfileWrap, CommentOptionsMenu, CommentMenu, CommentOption } from "../styles/ProductInquiryStyles";
+import { CommentMenuButton, CommentContent, CommentDate, CommentProfileImg, CommentItem, CommentNickname, CommentNicknameWrap, CommentProfileWrap, CommentOptionsMenu, CommentMenu, CommentOption, InquiryEmptyWrap, InquiryEmpty, CommentWrap, CommentTextarea, CommentUpdateMenu } from "../styles/ProductInquiryStyles";
 import profileDefaultImg from "../assets/profileDefaultImg.png";
+import inquiryEmptyImg from "../assets/inquiryEmpty.png";
+import { useState } from "react";
+import Button from './Button';
 
 function getRelativeTime (updatedAt) {
   const now = new Date();
@@ -32,32 +34,68 @@ function getRelativeTime (updatedAt) {
 
 function ProductInquiryList ({ list }) {
   const [openMenuId, setOpenMenuId] = useState(null);
+  const [editingCommentId, setEditingCommentId] = useState(null);
   
   const toggleDropdown = (id) => {
     setOpenMenuId((prev) => prev === id ? null : id);
   }
   
+  const setActiveCommentId = (id) => {
+    setEditingCommentId(id);
+    setOpenMenuId(null);
+  }
+  
+  const isDeleteComment = (id) => {
+    console.log("삭제할 댓글 번호:" + id );
+  }
+  
+  const isUpdateComment = (id) => {
+    console.log("수정할 댓글 번호:" + id);
+  };
+  
   return (
     <div>
-      {list.map((item, index) => (
-        <CommentItem key={index}>
-          <CommentContent>{item.content}</CommentContent>
-          <CommentProfileWrap>
-            <CommentProfileImg src={item.writer.image || profileDefaultImg} alt={`${item.writer.nickname} 이미지`} />
-            <CommentNicknameWrap>
-              <CommentNickname>{item.writer.nickname}</CommentNickname>
-              <CommentDate>{getRelativeTime(item.updatedAt)}</CommentDate>
-            </CommentNicknameWrap>
-          </CommentProfileWrap>
-          <CommentMenu>
-            <CommentMenuButton onClick={() => toggleDropdown(item.id)} />
-            <CommentOptionsMenu className={`${openMenuId === item.id ? 'active' : ''}`}>
-              <CommentOption>수정하기</CommentOption>
-              <CommentOption>삭제하기</CommentOption>
-            </CommentOptionsMenu>
-          </CommentMenu>
-        </CommentItem>
-      ))}
+      {list.length > 0 ? 
+        <CommentWrap>
+          {list.map((item, index) => (
+            <CommentItem key={index}>
+              {editingCommentId === item.id ? 
+                <CommentTextarea value={item.content} /> 
+                : 
+                <CommentContent>{item.content}</CommentContent>
+              }
+              {editingCommentId !== item.id ? 
+                <CommentMenu>
+                  <CommentMenuButton onClick={() => toggleDropdown(item.id)} />
+                  <CommentOptionsMenu className={`${openMenuId === item.id ? 'active' : ''}`}>
+                    <CommentOption onClick={() => setActiveCommentId(item.id)}>수정하기</CommentOption>
+                    <CommentOption onClick={() => isDeleteComment(item.id)}>삭제하기</CommentOption>
+                  </CommentOptionsMenu>
+                </CommentMenu>
+              : 
+                <CommentUpdateMenu>
+                  <Button className="button ghost" onClick={() => setActiveCommentId(null)}>취소</Button>
+                  <Button className="button defaultButton" onClick={() => isUpdateComment(item.id)}>수정완료</Button>
+                </CommentUpdateMenu>
+              }
+              <CommentProfileWrap>
+                <CommentProfileImg src={item.writer.image || profileDefaultImg} alt={`${item.writer.nickname} 이미지`} />
+                <CommentNicknameWrap>
+                  <CommentNickname>{item.writer.nickname}</CommentNickname>
+                  <CommentDate>{getRelativeTime(item.updatedAt)}</CommentDate>
+                </CommentNicknameWrap>
+              </CommentProfileWrap>
+            </CommentItem>
+          ))}
+      </CommentWrap>
+      :  
+      <InquiryEmptyWrap>
+        <InquiryEmpty>
+          <img src={inquiryEmptyImg} alt="문의가 없을때 이미지" />
+          아직 문의가 없어요
+        </InquiryEmpty>
+      </InquiryEmptyWrap>
+      }
     </div>
   )
 }

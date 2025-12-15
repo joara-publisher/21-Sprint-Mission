@@ -64,10 +64,10 @@ function ProductList () {
         <ProductListBox>
           <TitleBox>
             <ListTitle>전체 상품</ListTitle>
-            <Button classNames="button defaultButton mobileButton" onClick={goToAddItem}>상품 등록하기</Button>
+            <Button className="button defaultButton" mobileOnly onClick={goToAddItem}>상품 등록하기</Button>
             <SearchSelectBox>
               <Search changeKeyword={changeKeyword} />
-              <Button  classNames="button defaultButton desktopButton" onClick={goToAddItem}>상품 등록하기</Button>
+              <Button  className="button defaultButton" desktopOnly onClick={goToAddItem}>상품 등록하기</Button>
               <Dropdown isOpen={dropdownOpen} value={order} currentScreen={currentScreen} toggleDropdown={toggleDropdown} changeOrder={changeOrder} />
             </SearchSelectBox>
           </TitleBox>

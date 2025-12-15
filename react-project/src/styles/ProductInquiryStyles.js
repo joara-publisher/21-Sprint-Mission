@@ -1,5 +1,18 @@
 import styled from "styled-components";
 import { Textarea } from "./FormCommonStyles";
+import { DefaultButton } from './ButtonStyles';
+
+export const InquirySectionWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-top: 40px;
+`;
+
+export const InquiryForm = styled.form`
+  display: inline-block;
+  width: 100%;
+`;
 
 export const InquiryFormTitle = styled.div`
   font-weight: 600;
@@ -13,6 +26,14 @@ export const InquiryFormTextarea = styled(Textarea)`
   margin-bottom: 16px;
 `;
 
+export const InquiryFormButton = styled(DefaultButton)`
+  float: right;
+`;
+
+export const CommentWrap = styled.div`
+  margin-bottom: 64px;
+`;
+
 export const CommentItem = styled.li`
   position: relative;
   padding-bottom: 12px;
@@ -21,6 +42,11 @@ export const CommentItem = styled.li`
   & + & {
     margin-top: 24px;
   }
+`;
+
+export const CommentTextarea = styled(Textarea)`
+  height: 80px;
+  margin-bottom: 23px;
 `;
 
 export const CommentContent = styled.p`
@@ -100,6 +126,16 @@ export const CommentOptionsMenu = styled.ul`
   }
 `;
 
+export const CommentUpdateMenu = styled.div`
+  z-index: 1;
+  position: absolute;
+  right: 0;
+  display: flex;
+  gap: 4px;
+  padding: 2.5px 0;
+  margin-top: -3.5px;
+`;
+
 export const CommentOption = styled.li`
   min-height: 46px;
   display: flex;
@@ -111,4 +147,19 @@ export const CommentOption = styled.li`
   &:last-child {
     border-bottom: none;
   }
+`;
+
+export const InquiryEmptyWrap = styled.div`
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 26px;
+  color: var(--gray400);
+  text-align: center;
+  margin-bottom: 48px;
+`;
+
+export const InquiryEmpty = styled.div`
+  display: inline-flex;
+  flex-direction: column;
+  gap: 8px;
 `;

@@ -10,7 +10,7 @@ function DetailInfo ({ item }) {
         <DetailTxtWrap>
           <DetailTxtTop>
             <DetailName>{item.name}</DetailName>
-            <DetailPrice>{item.price}원</DetailPrice>
+            <DetailPrice>{item.price.toLocaleString()}원</DetailPrice>
           </DetailTxtTop>
           <DetailInfoList>
             <DetailInfoTitle>상품 소개</DetailInfoTitle>

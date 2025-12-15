@@ -24,36 +24,6 @@ const GlobalStyle = createGlobalStyle`
   body {
     font-family: "Pretendard", sans-serif;
   }
-  
-  .defaultButton {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 16px;
-    font-weight: 600;
-    line-height: 1.5;
-    color: var(--gray100);
-    padding: 9.5px 20px;
-    border-radius: 8px;
-    background-color: var(--blue);
-    
-    &:disabled {
-      background-color: var(--gray400);
-    }
-  }
-  
-  .desktopButton {
-    @media (max-width: 767px) {
-      display: none;
-    }
-  }
-  
-  .mobileButton {
-    display: none;
-    @media (max-width: 767px) {
-      display: block;
-    }
-  }
 `;
 
 export default GlobalStyle;
