@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Textarea } from "./FormCommonStyles";
-import { DefaultButton } from './ButtonStyles';
+import { DefaultButton } from "./ButtonStyles";
+import moreVerticalIcon from "../assets/moreVerticalIcon.svg";
 
 export const InquirySectionWrap = styled.div`
   display: flex;
@@ -18,7 +19,7 @@ export const InquiryFormTitle = styled.div`
   font-size: 16px;
   line-height: 26px;
   margin-bottom: 9px;
-  
+
   @media (max-width: 767px) {
     margin-bottom: 16px;
   }
@@ -27,7 +28,7 @@ export const InquiryFormTitle = styled.div`
 export const InquiryFormTextarea = styled(Textarea)`
   height: 104px;
   margin-bottom: 16px;
-  
+
   @media (max-width: 767px) {
     height: 129px;
     font-size: 14px;
@@ -41,7 +42,7 @@ export const InquiryFormButton = styled(DefaultButton)`
 
 export const CommentWrap = styled.div`
   margin-bottom: 64px;
-  
+
   @media (max-width: 1199px) {
     margin-bottom: 47px;
   }
@@ -54,15 +55,15 @@ export const CommentItem = styled.li`
   position: relative;
   padding-bottom: 12px;
   border-bottom: 1px solid var(--gray300);
-  
+
   & + & {
     margin-top: 24px;
   }
-  
+
   @media (max-width: 1199px) {
     padding-bottom: 9px;
   }
-  
+
   @media (max-width: 767px) {
     padding-bottom: 12px;
     & + & {
@@ -74,7 +75,7 @@ export const CommentItem = styled.li`
 export const CommentTextarea = styled(Textarea)`
   height: 80px;
   margin-bottom: 23px;
-  
+
   @media (max-width: 1199px) {
     font-size: 14px;
     line-height: 24px;
@@ -131,7 +132,7 @@ export const CommentMenu = styled.div`
 export const CommentMenuButton = styled.button`
   width: 24px;
   height: 24px;
-  background: url('/public/moreVerticalIcon.svg') no-repeat center / contain; // 이미지 안나와서 경로 옮김
+  background: url("${moreVerticalIcon}") no-repeat center / contain; // 이미지 안나와서 경로 옮김
 `;
 
 export const CommentOptionsMenu = styled.ul`
@@ -147,11 +148,11 @@ export const CommentOptionsMenu = styled.ul`
   background-color: var(--white);
   border: 1px solid var(--gray300);
   border-radius: 12px;
-  
+
   &.active {
     display: block;
   }
-  
+
   @media (max-width: 767px) {
     right: 0;
     width: 102px;
@@ -179,11 +180,11 @@ export const CommentOption = styled.li`
   align-items: center;
   border-bottom: 1px solid var(--gray300);
   cursor: pointer;
-  
+
   &:last-child {
     border-bottom: none;
   }
-  
+
   @media (max-width: 767px) {
     min-height: 45px;
   }
@@ -208,4 +209,4 @@ export const InquiryEmptyImg = styled.img`
   @media (max-width: 1199px) {
     width: 140px;
   }
-`
+`;
