@@ -181,8 +181,17 @@ export const CommentOption = styled.li`
   border-bottom: 1px solid var(--gray300);
   cursor: pointer;
 
+  &:first-child {
+    border-radius: 12px 12px 0 0;
+  }
+
   &:last-child {
     border-bottom: none;
+    border-radius: 0 0 12px 12px;
+  }
+
+  &:hover {
+    background-color: var(--gray100);
   }
 
   @media (max-width: 767px) {
