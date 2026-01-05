@@ -1,11 +1,13 @@
 import styled from "styled-components";
 import { TagList } from "./ProductCommonStyles";
+import heartDefault from "../assets/heartDefault.svg";
+import heartActive from "../assets/heartActive.svg";
 
 export const DetailWrap = styled.div`
   display: flex;
   gap: 24px;
   padding: 5px 0;
-  
+
   @media (max-width: 1199px) {
     gap: 16px;
     padding: 0;
@@ -21,13 +23,13 @@ export const DetailImg = styled.img`
   aspect-ratio: 1 / 1;
   object-fit: cover;
   border-radius: 28.59px;
-  
+
   @media (max-width: 1199px) {
     width: 340px;
     height: 340px;
     border-radius: 20px;
   }
-  
+
   @media (max-width: 767px) {
     width: 100vw;
     height: auto;
@@ -50,12 +52,12 @@ export const DetailName = styled.h2`
   font-size: 24px;
   line-height: 32px;
   margin-bottom: 16px;
-  
+
   @media (max-width: 1199px) {
     font-size: 20px;
     margin-bottom: 8px;
   }
-  
+
   @media (max-width: 767px) {
     font-size: 16px;
     line-height: 26px;
@@ -66,12 +68,12 @@ export const DetailPrice = styled.p`
   font-weight: 600;
   font-size: 40px;
   line-height: 100%;
-  
+
   @media (max-width: 1199px) {
     font-size: 32px;
     line-height: 42px;
   }
-  
+
   @media (max-width: 767px) {
     font-size: 24px;
     line-height: 32px;
@@ -81,7 +83,7 @@ export const DetailPrice = styled.p`
 export const DetailInfoList = styled.dl`
   color: var(--gray600);
   padding-top: 24px;
-  
+
   @media (max-width: 1199px) {
     padding-top: 16px;
   }
@@ -92,7 +94,7 @@ export const DetailInfoTitle = styled.dt`
   font-size: 16px;
   line-height: 26px;
   margin-bottom: 16px;
-  
+
   @media (max-width: 1199px) {
     font-size: 14px;
     line-height: 24px;
@@ -104,7 +106,7 @@ export const DetailDesc = styled.dd`
   font-weight: 400;
   font-size: 16px;
   line-height: 26px;
-  
+
   & + dt {
     margin-top: 24px;
   }
@@ -119,7 +121,7 @@ export const DetailTxtBottom = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-top: 62px;
-  
+
   @media (max-width: 1199px) {
     margin-top: 40px;
   }
@@ -166,9 +168,9 @@ export const DetailFavoritButton = styled.button`
   padding: 4px 12px;
   border-radius: 35px;
   border: 1px solid var(--gray200);
-  
+
   &:before {
-    content: '';
+    content: "";
     position: absolute;
     top: 50%;
     left: -24px;
@@ -179,10 +181,18 @@ export const DetailFavoritButton = styled.button`
   }
 `;
 
-export const DetailFavoritImg = styled.img`
+export const DetailFavoritImg = styled.span`
   width: 32px;
   height: 32px;
-  
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  background-image: url("${heartDefault}");
+
+  &:hover {
+    background-image: url("${heartActive}");
+  }
+
   @media (max-width: 1199px) {
     width: 24px;
     height: 24px;
