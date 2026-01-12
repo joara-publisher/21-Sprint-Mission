@@ -8,11 +8,13 @@ import {
   PasswordBox,
 } from "../../styles/AuthStyles";
 
+type AuthPasswordField = "password" | "passwordVerify";
+
 interface AuthPasswordProps {
-  field: "password" | "passwordVerify";
+  field: AuthPasswordField;
   error: string | "";
-  onChange: (field: "password" | "passwordVerify", value: string) => void;
-  onBlur: (field: "password" | "passwordVerify") => void;
+  onChange: (field: AuthPasswordField, value: string) => void;
+  onBlur: (field: AuthPasswordField) => void;
 }
 
 const AUTH_PASSWORD_FIELD_TEXT = {

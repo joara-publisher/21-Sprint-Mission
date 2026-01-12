@@ -1,11 +1,20 @@
 import styled, { css } from "styled-components";
 
+const FONT_SIZES = {
+  sm: "16px",
+  md: "18px",
+} as const;
+
+const PADDINGS = {
+  default: "11px 20px",
+} as const;
+
 interface ButtonProps {
   disabled?: boolean;
   $variant?: "primary" | "rounded";
   $withIcon?: boolean;
-  $fontSizeVariant?: string;
-  $paddingVariant?: string;
+  fontSizeVariant?: "sm" | "md";
+  paddingVariant?: "default";
   $desktopOnly?: boolean;
   $mobileOnly?: boolean;
 }
@@ -16,11 +25,11 @@ export const DefaultButton = styled.button<ButtonProps>`
   justify-content: center;
   gap: ${({ $withIcon }) => ($withIcon ? "8px" : "0")};
 
-  font-size: ${({ $fontSizeVariant }) =>
-    $fontSizeVariant ? $fontSizeVariant : "16px"};
+  font-size: ${({ fontSizeVariant }) =>
+    fontSizeVariant ? FONT_SIZES[fontSizeVariant] : "16px"};
   font-weight: 600;
-  padding: ${({ $paddingVariant }) =>
-    $paddingVariant ? $paddingVariant : "11px 20px"};
+  padding: ${({ paddingVariant }) =>
+    paddingVariant ? PADDINGS[paddingVariant] : "11px 20px"};
 
   color: var(--gray100);
   background-color: var(--blue);

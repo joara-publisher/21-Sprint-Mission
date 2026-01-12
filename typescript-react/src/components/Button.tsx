@@ -8,8 +8,8 @@ interface ButtonProps {
   disabled?: boolean;
   variant?: "primary" | "rounded";
   withIcon?: boolean;
-  fontSizeVariant?: string;
-  paddingVariant?: string;
+  fontSizeVariant?: "sm" | "md";
+  paddingVariant?: "default";
   desktopOnly?: boolean;
   mobileOnly?: boolean;
 }
@@ -32,8 +32,8 @@ function Button({
       onClick={onClick}
       disabled={disabled}
       $variant={variant}
-      $fontSizeVariant={fontSizeVariant}
-      $paddingVariant={paddingVariant}
+      fontSizeVariant={fontSizeVariant}
+      paddingVariant={paddingVariant}
       $withIcon={withIcon}
       $desktopOnly={desktopOnly}
       $mobileOnly={mobileOnly}

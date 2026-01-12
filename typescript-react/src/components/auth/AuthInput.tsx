@@ -1,11 +1,13 @@
 import { type ChangeEventHandler } from "react";
 import { ErrorMessage, Input, InputWrap, Label } from "../../styles/AuthStyles";
 
+type AuthInputField = "email" | "nickname";
+
 interface AuthInputProps {
-  field: "email" | "nickname";
+  field: AuthInputField;
   error: string | "";
-  onChange: (field: "email" | "nickname", value: string) => void;
-  onBlur: (field: "email" | "nickname") => void;
+  onChange: (field: AuthInputField, value: string) => void;
+  onBlur: (field: AuthInputField) => void;
 }
 
 const AUTH_INPUT_FIELD_TEXT = {

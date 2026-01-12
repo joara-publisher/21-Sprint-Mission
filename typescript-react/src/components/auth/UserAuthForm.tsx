@@ -2,8 +2,10 @@ import type { MouseEventHandler, ReactNode } from "react";
 import { AuthFormButton } from "../../styles/AuthStyles";
 import { useNavigate } from "react-router-dom";
 
+type FormId = "formSignin" | "formSignup";
+
 interface UserAuthFormProps {
-  formId: string;
+  formId: FormId;
   fields: ReactNode;
   buttonText: string;
   buttonUrl: string;

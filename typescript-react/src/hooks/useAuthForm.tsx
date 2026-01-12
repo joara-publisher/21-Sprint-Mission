@@ -1,29 +1,24 @@
 import { useState } from "react";
 
-interface UserAuthFormProps {
+interface FormFields {
   email: string;
   nickname: string;
   password: string;
   passwordVerify: string;
 }
-type FieldName = keyof UserAuthFormProps; // UserAuthFormValues 모든 키를 유니온 타읍으로 만들어 줌
 
-interface ErrorProps {
-  email: string;
-  nickname: string;
-  password: string;
-  passwordVerify: string;
-}
+type FieldName = keyof FormFields; // UserAuthFormValues 모든 키를 유니온 타입으로 만들어 줌
+type FormErrors = Record<FieldName, string>; // FieldName에 들어있는 값들(email, nickname 등)을 "키(Key)"로 사용하고, 그 값(Value)의 타입은 전부 string으로 정하겠다.
 
 function useAuthForm(requiredFields: FieldName[]) {
-  const [values, setValues] = useState<UserAuthFormProps>({
+  const [values, setValues] = useState<FormFields>({
     email: "",
     nickname: "",
     password: "",
     passwordVerify: "",
   });
 
-  const [errors, setErrors] = useState<ErrorProps>({
+  const [errors, setErrors] = useState<FormErrors>({
     email: "",
     nickname: "",
     password: "",
