@@ -1,0 +1,14 @@
+.header {
+  display: flex;
+  align-items: center;
+  height: 80px;
+  background: var(--white);
+  border-bottom: 1px solid var(--slate200);
+}
+
+.logo {
+  position: relative;
+  display: inline-block;
+  width: 151px;
+  height: 40px;
+}
