@@ -36,13 +36,6 @@ export default function Home({ initialTodos }: { initialTodos: Todo[] }) {
           name="description"
           content="할 일 목록을 관리하는 홈페이지 do it!"
         />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-        <link
-          rel="stylesheet"
-          type="text/css"
-          href="https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@2.0/nanumsquare.css"
-        />
       </Head>
       <Header />
       <main className={styles.main}>

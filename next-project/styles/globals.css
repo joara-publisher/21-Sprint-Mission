@@ -124,7 +124,6 @@ textarea {
 }
 
 body {
-  font-family: "NanumSquare", sans-serif;
   min-height: 100vh;
   transition: all 0.4s;
 }
@@ -134,4 +133,17 @@ body {
   width: 100%;
   margin: 0 auto;
   padding: 0 16px;
+}
+
+.pcOnly {
+  display: block;
+  @media (max-width: 767px) {
+    display: none;
+  }
+}
+.mobileOnly {
+  display: none;
+  @media (max-width: 767px) {
+    display: block;
+  }
 }
