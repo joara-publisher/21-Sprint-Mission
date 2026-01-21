@@ -32,11 +32,7 @@ export default function Home({ initialTodos }: { initialTodos: Todo[] }) {
   return (
     <>
       <Head>
-        <title>do it!</title>
-        <meta
-          name="description"
-          content="할 일 목록을 관리하는 홈페이지 do it!"
-        />
+        <title>할 일 목록 - do it!</title>
       </Head>
       <main className={styles.main}>
         <div className={styles.container}>

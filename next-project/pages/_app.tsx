@@ -1,4 +1,5 @@
 import type { AppProps } from "next/app";
+import Head from "next/head";
 import localFont from "next/font/local";
 import Header from "@/components/Header";
 import "@/styles/globals.css";
@@ -14,9 +15,18 @@ const nanumSquare = localFont({
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <div className={nanumSquare.className}>
-      <Header />
-      <Component {...pageProps} />
-    </div>
+    <>
+      <Head>
+        <title>do it!</title>
+        <meta
+          name="description"
+          content="할 일 목록을 관리하는 홈페이지 do it!"
+        />
+      </Head>
+      <div className={nanumSquare.className}>
+        <Header />
+        <Component {...pageProps} />
+      </div>
+    </>
   );
 }
