@@ -1,10 +1,11 @@
 import Head from "next/head";
-import Header from "@/components/Header";
 import { Todo } from "@/types/todos";
 import axios from "@/lib/axios";
 import { useTodo } from "@/hooks/useTodo";
 import styles from "@/styles/Home.module.css";
 import Image from "next/image";
+import Checkbox from "@/components/Checkbox";
+import Link from "next/link";
 
 export const getServerSideProps = async () => {
   let initialTodos;
@@ -37,9 +38,8 @@ export default function Home({ initialTodos }: { initialTodos: Todo[] }) {
           content="할 일 목록을 관리하는 홈페이지 do it!"
         />
       </Head>
-      <Header />
       <main className={styles.main}>
-        <div className="container">
+        <div className={styles.container}>
           <form onSubmit={handleAddList}>
             <div className={styles.formInner}>
               <div className={styles.inputWrapper}>
@@ -76,14 +76,17 @@ export default function Home({ initialTodos }: { initialTodos: Todo[] }) {
                 <ul>
                   {todoList.map((item) => (
                     <li className={styles.item} key={item.id}>
-                      <input
-                        className={styles.checkbox}
-                        type="checkbox"
-                        onChange={(e) =>
-                          handleChangeCheckbox(item.id, e.target.checked)
-                        }
-                      />
-                      {item.name}
+                      <Link href={`/items/${item.id}`}>
+                        <Checkbox
+                          onChange={(e) => {
+                            handleChangeCheckbox(item.id, e.target.checked);
+                          }}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                          }}
+                        />
+                        <span className={styles.itemName}>{item.name}</span>
+                      </Link>
                     </li>
                   ))}
                 </ul>
@@ -110,15 +113,18 @@ export default function Home({ initialTodos }: { initialTodos: Todo[] }) {
                       className={`${styles.item} ${styles.done}`}
                       key={item.id}
                     >
-                      <input
-                        className={styles.checkbox}
-                        type="checkbox"
-                        checked
-                        onChange={(e) =>
-                          handleChangeCheckbox(item.id, e.target.checked)
-                        }
-                      />
-                      {item.name}
+                      <Link href={`/items/${item.id}`}>
+                        <Checkbox
+                          checked={true}
+                          onChange={(e) => {
+                            handleChangeCheckbox(item.id, e.target.checked);
+                          }}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                          }}
+                        />
+                        <span className={styles.itemName}>{item.name}</span>
+                      </Link>
                     </li>
                   ))}
                 </ul>

@@ -1,0 +1,13 @@
+.checkbox {
+  width: 32px;
+  height: 32px;
+  background-image: url("/checkbox_default.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  cursor: pointer;
+
+  &:checked {
+    background-image: url("/checkbox_active.svg");
+  }
+}

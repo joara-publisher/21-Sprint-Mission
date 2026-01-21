@@ -1,0 +1,188 @@
+.itemPage {
+  padding: 24px 0;
+}
+
+.container {
+  max-width: 996px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.itemNameBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  height: 64px;
+  padding: 16px 12px;
+  background-color: var(--white);
+  border: 2px solid var(--slate900);
+  border-radius: 24px;
+
+  &.active {
+    background-color: var(--violet200);
+  }
+}
+
+.itemName {
+  max-width: calc(100% - 48px);
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 100%;
+  color: var(--slate900);
+  text-decoration: underline;
+  background-color: transparent;
+}
+
+.itemContent {
+  display: flex;
+  gap: 24px;
+  margin-top: 24px;
+
+  @media (max-width: 767px) {
+    flex-direction: column;
+  }
+}
+
+.itemImageBox {
+  position: relative;
+  width: 384px;
+  height: 311px;
+  border-radius: 24px;
+
+  &.default {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px dashed var(--slate300);
+    background-color: var(--slat50);
+  }
+
+  img {
+    object-fit: contain;
+    object-position: center;
+  }
+
+  @media (max-width: 767px) {
+    width: 100%;
+  }
+}
+
+.itemImageButton {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  width: 64px;
+  height: 64px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+
+  &.add {
+    background-image: url("/file_add_button.png");
+  }
+
+  &.edit {
+    background-image: url("/file_edit_button.png");
+  }
+}
+
+.itemPage input[type="file"] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.itemMemoBox {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex: 1;
+  padding: 24px 10px 24px 16px;
+  border-radius: 24px;
+  background: url("/memo_bg.png") no-repeat center / cover;
+
+  @media (max-width: 767px) {
+    flex: auto;
+    height: 311px;
+  }
+}
+
+.MemoBoxTitle {
+  font-weight: 800;
+  font-size: 16px;
+  line-height: 100%;
+  text-align: center;
+  color: var(--amber);
+}
+
+.memoWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  max-height: 229px;
+  overflow-y: auto;
+
+  &:before,
+  &:after {
+    content: "";
+    margin: auto;
+  }
+}
+
+.memo {
+  width: 100%;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 100%;
+  color: var(--slate800);
+  text-align: center;
+  background-color: transparent;
+  resize: none;
+
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #fde68a;
+    border-radius: 3px;
+  }
+}
+
+.buttonBox {
+  display: flex;
+  justify-content: end;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.editButton,
+.deleteButton {
+  width: 168px;
+  height: 56px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.editButton {
+  background-image: url("/edit_button_default.png");
+  transition: all 0.4s;
+
+  &.active {
+    background-image: url("/edit_button_active.png");
+  }
+}
+
+.deleteButton {
+  background-image: url("/delete_button.png");
+}

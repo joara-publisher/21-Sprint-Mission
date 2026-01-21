@@ -1,18 +1,20 @@
 import { Todo } from "@/types/todos";
 import axios from "@/lib/axios";
 import { ChangeEvent, FormEvent, useMemo, useState } from "react";
+import { useRouter } from "next/router";
 
 export const useTodo = ({ initialTodos }: { initialTodos: Todo[] }) => {
   const [allTodo, setAllTodo] = useState<Todo[]>(initialTodos);
   const [name, setName] = useState("");
+  const router = useRouter();
 
   const todoList = useMemo(
     () => allTodo.filter((list) => !list.isCompleted),
-    [allTodo]
+    [allTodo],
   );
   const doneList = useMemo(
     () => allTodo.filter((list) => list.isCompleted),
-    [allTodo]
+    [allTodo],
   );
 
   const handleChangeInput = (e: ChangeEvent<HTMLInputElement>) => {
@@ -50,7 +52,7 @@ export const useTodo = ({ initialTodos }: { initialTodos: Todo[] }) => {
             return { id, name, isCompleted };
           }
           return todo;
-        })
+        }),
       );
     } catch (error) {
       console.error("데이터 전송 실패:", error);
