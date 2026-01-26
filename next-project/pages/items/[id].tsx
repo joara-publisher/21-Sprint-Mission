@@ -58,7 +58,7 @@ export default function ItemsPage({ initialTodo }: { initialTodo: Todo }) {
                 name="name"
                 className={styles.itemName}
                 value={todoItem.name}
-                size={todoItem.name.length > 0 ? todoItem.name.length : 1}
+                size={todoItem.name.length + 1 || 1}
                 onChange={handleChange}
               />
             </div>
@@ -79,12 +79,14 @@ export default function ItemsPage({ initialTodo }: { initialTodo: Todo }) {
                 <input
                   type="file"
                   accept="image/*"
+                  aria-label="이미지 파일 선택"
                   ref={fileInputRef}
                   onChange={handleFileChange}
                 />
                 <button
                   className={`${styles.itemImageButton} ${previewUrl ? styles.edit : styles.add}`}
                   type="button"
+                  aria-label={previewUrl ? "이미지 변경" : "이미지 추가"}
                   onClick={handleButtonClick}
                 ></button>
               </div>
@@ -107,12 +109,15 @@ export default function ItemsPage({ initialTodo }: { initialTodo: Todo }) {
             </div>
             <div className={styles.buttonBox}>
               <button
+                disabled={!isDirty}
                 className={`${styles.editButton} ${isDirty ? styles.active : ""}`}
                 type="submit"
+                aria-label="수정하기"
               ></button>
               <button
                 className={styles.deleteButton}
                 type="button"
+                aria-label="삭제하기"
                 onClick={() => handleDelete(todoItem.id)}
               ></button>
             </div>

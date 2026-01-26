@@ -50,6 +50,7 @@ export default function Home({ initialTodos }: { initialTodos: Todo[] }) {
               <button
                 className={`${styles.addButton} ${name ? styles.active : ""}`}
                 type="submit"
+                aria-label="추가하기"
               ></button>
             </div>
           </form>

@@ -142,3 +142,7 @@ body {
     display: block;
   }
 }
+
+button:disabled {
+  cursor: not-allowed;
+}
