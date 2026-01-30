@@ -126,17 +126,12 @@ export const EyeButton = styled.button`
 `;
 
 export const ErrorMessage = styled.div`
-  display: none;
   font-weight: 600;
   font-size: 14px;
   line-height: 24px;
   color: var(--red);
-  margin-top: 8px;
+  margin-top: -8px;
   padding-left: 16px;
-
-  &.active {
-    display: block;
-  }
 `;
 
 export const AuthFormButton = styled.button`

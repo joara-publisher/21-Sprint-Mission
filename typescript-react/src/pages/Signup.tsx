@@ -1,62 +1,80 @@
+import { Controller } from "react-hook-form";
 import AuthHeader from "../components/auth/AuthHeader";
-import AuthInput from "../components/auth/AuthInput";
-import AuthPassword from "../components/auth/AuthPassword";
 import EasySignin from "../components/auth/EasySignin";
-import UserAuthForm from "../components/auth/UserAuthForm";
-import useAuthForm from "../hooks/useAuthForm";
+import AuthInput from "../components/auth/AuthInput";
 import {
+  AuthFormButton,
   GotoLink,
   GotoLinkWrapper,
   UserAuthContainer,
   UserAuthWrapper,
 } from "../styles/AuthStyles";
+import AuthPassword from "../components/auth/AuthPassword";
+import useSignupForm from "../hooks/useSignupForm";
 
 function Signup() {
-  const { errors, handleChange, handleBlur, isFormValid } = useAuthForm([
-    "email",
-    "nickname",
-    "password",
-    "passwordVerify",
-  ]);
+  const { control, handleSubmit, errors, isValid, onSubmit } = useSignupForm();
 
   return (
     <UserAuthWrapper className="signup_page">
       <AuthHeader />
       <UserAuthContainer>
-        <UserAuthForm
-          formId="formSignup"
-          fields={
-            <>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <Controller
+            name="email"
+            control={control}
+            render={({ field }) => (
               <AuthInput
-                field="email"
-                error={errors.email}
-                onChange={handleChange}
-                onBlur={handleBlur}
+                label="이메일"
+                field={field}
+                error={errors.email?.message}
+                placeholder="이메일을 입력해주세요"
+                type="email"
               />
+            )}
+          />
+          <Controller
+            name="nickname"
+            control={control}
+            render={({ field }) => (
               <AuthInput
-                field="nickname"
-                error={errors.nickname}
-                onChange={handleChange}
-                onBlur={handleBlur}
+                label="닉네임"
+                field={field}
+                error={errors.nickname?.message}
+                placeholder="닉네임을 입력해주세요"
+                type="nickname"
               />
+            )}
+          />
+          <Controller
+            name="password"
+            control={control}
+            render={({ field }) => (
               <AuthPassword
-                field="password"
-                error={errors.password}
-                onChange={handleChange}
-                onBlur={handleBlur}
+                label="비밀번호"
+                field={field}
+                error={errors.password?.message}
+                placeholder="비밀번호를 입력해주세요"
               />
+            )}
+          />
+          <Controller
+            name="passwordConfirmation"
+            control={control}
+            render={({ field }) => (
               <AuthPassword
-                field="passwordVerify"
-                error={errors.passwordVerify}
-                onChange={handleChange}
-                onBlur={handleBlur}
+                label="비밀번호 확인"
+                field={field}
+                error={errors.passwordConfirmation?.message}
+                placeholder="비밀번호를 다시 한 번 입력해주세요"
               />
-            </>
-          }
-          buttonText="회원가입"
-          buttonUrl="/signin"
-          isButtonActive={isFormValid}
-        />
+            )}
+          />
+          <AuthFormButton type="submit" disabled={!isValid}>
+            회원가입
+          </AuthFormButton>
+        </form>
+
         <EasySignin />
         <GotoLinkWrapper>
           이미 회원이신가요?
