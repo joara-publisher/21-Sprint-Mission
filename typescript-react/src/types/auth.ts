@@ -32,7 +32,7 @@ export const signUpSchema = z
     message: "비밀번호가 일치하지 않습니다.",
     path: ["passwordConfirmation"],
   });
-export type SignUpValues = z.infer<typeof signInSchema>;
+export type SignUpValues = z.infer<typeof signUpSchema>;
 
 export const signInSchema = z.object({
   email: z
