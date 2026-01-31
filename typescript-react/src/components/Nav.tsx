@@ -1,18 +1,27 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import useAuth from "@/hooks/useAuth";
 import Button from "./Button";
 import {
   Container,
   Header,
+  KebabButton,
+  KebabMenu,
   Left,
   Logo,
   LogoDesktopImg,
   LogoMobileImg,
+  MyProfile,
+  ProfileImg,
 } from "../styles/NavStyles";
 import logoImg from "../assets/images/logo.png";
 import logoMoImg from "../assets/images/logo_mo.png";
+import profileDefaultImg from "../assets/images/profile_default.png";
 
 function Nav() {
+  const { user, logout } = useAuth();
   const navigate = useNavigate();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <Header>
@@ -50,15 +59,30 @@ function Nav() {
           </MenuList> */}
         </Left>
         <div>
-          <Button
-            className="button defaultButton"
-            onClick={() => navigate("/signin")}
-          >
-            로그인
-          </Button>
-          {/* <MyProfile>
-            <ProfileImg />
-          </MyProfile> */}
+          {user ? (
+            <MyProfile>
+              <ProfileImg
+                onClick={() => setIsMenuOpen((prev) => !prev)}
+                style={{
+                  backgroundImage: `url(${user.image ? user.image : profileDefaultImg})`,
+                }}
+              />
+              <KebabMenu className={isMenuOpen ? "isActive" : ""}>
+                <ul>
+                  <li>
+                    <KebabButton onClick={logout}>로그아웃</KebabButton>
+                  </li>
+                </ul>
+              </KebabMenu>
+            </MyProfile>
+          ) : (
+            <Button
+              className="button defaultButton"
+              onClick={() => navigate("/signin")}
+            >
+              로그인
+            </Button>
+          )}
         </div>
       </Container>
     </Header>

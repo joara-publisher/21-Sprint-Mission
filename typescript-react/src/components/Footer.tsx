@@ -5,7 +5,7 @@ import {
   FooterWrapper,
   LinkBox,
   PopupBox,
-} from "./../styles/FooterStyles";
+} from "../styles/FooterStyles";
 
 function Footer() {
   return (

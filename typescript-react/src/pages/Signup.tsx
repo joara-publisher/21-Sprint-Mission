@@ -11,8 +11,10 @@ import {
 } from "../styles/AuthStyles";
 import AuthPassword from "../components/auth/AuthPassword";
 import useSignupForm from "../hooks/useSignupForm";
+import useAuth from "@/hooks/useAuth";
 
 function Signup() {
+  useAuth(true);
   const { control, handleSubmit, errors, isValid, onSubmit } = useSignupForm();
 
   return (

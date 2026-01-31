@@ -11,8 +11,10 @@ import {
 import AuthInput from "@/components/auth/AuthInput";
 import AuthPassword from "@/components/auth/AuthPassword";
 import useSigninForm from "@/hooks/useSigninForm";
+import useAuth from "@/hooks/useAuth";
 
 function Signin() {
+  useAuth(true);
   const { control, handleSubmit, errors, isValid, onSubmit } = useSigninForm();
 
   return (

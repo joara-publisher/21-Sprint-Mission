@@ -1,6 +1,5 @@
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
-import profileDefaultImg from "../assets/images/profile_default.png";
 
 export const Header = styled.header`
   position: sticky;
@@ -86,13 +85,38 @@ export const MenuItemLink = styled(NavLink)`
   }
 `;
 
-export const MyProfile = styled.div``;
+export const MyProfile = styled.div`
+  position: relative;
+`;
 
 export const ProfileImg = styled.button`
   width: 40px;
   height: 40px;
-  background-image: url(${profileDefaultImg});
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+`;
+
+export const KebabMenu = styled.div`
+  display: none;
+  position: absolute;
+  right: 0;
+  width: max-content;
+  margin-top: 8px;
+  background-color: var(--white);
+  border: 1px solid var(--gray300);
+  border-radius: 10px;
+
+  &.isActive {
+    display: block;
+  }
+`;
+
+export const KebabButton = styled.button`
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 100%;
+  color: var(--gray500);
+  text-align: center;
+  padding: 16px 41.5px;
 `;

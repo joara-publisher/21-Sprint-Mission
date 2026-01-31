@@ -1,6 +1,12 @@
 import type { ControllerRenderProps, FieldValues, Path } from "react-hook-form";
 import z from "zod";
 
+export interface User {
+  id: number;
+  nickname: string;
+  image: string;
+}
+
 export interface AuthInputProps<T extends FieldValues> {
   label: string;
   field: ControllerRenderProps<T, Path<T>>;
