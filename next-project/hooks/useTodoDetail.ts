@@ -39,6 +39,7 @@ export const useTodoDetail = ({ initialTodo }: { initialTodo: Todo }) => {
   };
 
   const handleButtonClick = () => {
+    console.log("test");
     fileInputRef.current?.click();
   };
 

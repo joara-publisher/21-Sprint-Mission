@@ -8,9 +8,9 @@ import {
   GotoLinkWrapper,
   UserAuthContainer,
   UserAuthWrapper,
-} from "../styles/AuthStyles";
-import AuthPassword from "../components/auth/AuthPassword";
-import useSignupForm from "../hooks/useSignupForm";
+} from "@/styles/AuthStyles";
+import AuthPassword from "@/components/auth/AuthPassword";
+import useSignupForm from "@/hooks/useSignupForm";
 import useAuth from "@/hooks/useAuth";
 
 function Signup() {
@@ -44,7 +44,7 @@ function Signup() {
                 field={field}
                 error={errors.nickname?.message}
                 placeholder="닉네임을 입력해주세요"
-                type="nickname"
+                type="text"
               />
             )}
           />

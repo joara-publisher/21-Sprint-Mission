@@ -19,7 +19,7 @@ function useSigninForm() {
     },
   });
 
-  const onSubmit = async (data: SignInValues) => {
+  const onSubmit = (data: SignInValues) => {
     login(data);
   };
 

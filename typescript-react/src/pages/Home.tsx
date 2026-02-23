@@ -7,10 +7,11 @@ import {
   SectionItems,
   SectionRegister,
   SectionSearch,
-} from "../styles/HomeStyles";
-import itemImg from "../assets/images/item.png";
-import searchImg from "../assets/images/search.png";
-import registerImg from "../assets/images/register.png";
+} from "@/styles/HomeStyles";
+import itemImg from "@/assets/images/item.png";
+import searchImg from "@/assets/images/search.png";
+import registerImg from "@/assets/images/register.png";
+import { Link } from "react-router-dom";
 
 function Home() {
   return (
@@ -19,9 +20,9 @@ function Home() {
         <SectionInner>
           <CommonContentBox>
             <h2 className="section_title">일상의 모든 물건을 거래해 보세요</h2>
-            <a href="/items" className="btn click_to_items">
+            <Link to="/items" className="btn click_to_items">
               구경하러 가기
-            </a>
+            </Link>
           </CommonContentBox>
         </SectionInner>
       </SectionBanner>

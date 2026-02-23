@@ -7,7 +7,7 @@ import {
   GotoLinkWrapper,
   UserAuthContainer,
   UserAuthWrapper,
-} from "../styles/AuthStyles";
+} from "@/styles/AuthStyles";
 import AuthInput from "@/components/auth/AuthInput";
 import AuthPassword from "@/components/auth/AuthPassword";
 import useSigninForm from "@/hooks/useSigninForm";
