@@ -1,9 +1,10 @@
 import type { MouseEventHandler, ReactNode } from "react";
-import { DefaultButton } from "../styles/ButtonStyles";
+import { DefaultButton } from "@/styles/ButtonStyles";
 
 interface ButtonProps {
   children: ReactNode;
   className: string;
+  type?: "button" | "submit";
   onClick?: MouseEventHandler<HTMLButtonElement>;
   disabled?: boolean;
   variant?: "primary" | "rounded";
@@ -17,6 +18,7 @@ interface ButtonProps {
 function Button({
   children,
   className,
+  type = "button",
   onClick,
   disabled = false,
   variant = "primary",
@@ -29,6 +31,7 @@ function Button({
   return (
     <DefaultButton
       className={className}
+      type={type}
       onClick={onClick}
       disabled={disabled}
       $variant={variant}

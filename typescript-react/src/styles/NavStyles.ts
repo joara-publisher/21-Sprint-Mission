@@ -13,11 +13,11 @@ export const Container = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1920px;
+  max-width: 1520px;
   width: 100%;
   height: 100%;
   margin: 0 auto;
-  padding: 0 200px;
+  padding: 0 20px;
 
   @media (max-width: 1199px) {
     padding: 0 24px;
