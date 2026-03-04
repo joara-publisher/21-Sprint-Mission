@@ -32,16 +32,6 @@ export const getProduct = async (id: number) => {
   return response;
 };
 
-export const getComments = async (id: number) => {
-  const response = await axios.get(`products/${id}/comments`, {
-    params: {
-      limit: 10,
-    },
-  });
-
-  return response;
-};
-
 export const postImage = async (image: File) => {
   const formData = new FormData();
   formData.append("image", image);

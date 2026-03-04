@@ -1,17 +1,15 @@
-import type { CommentType } from "@/types/comment";
 import { CommentSectionWrap } from "@/styles/ItemCommentStyles";
 import ItemCommentForm from "./ItemCommentForm";
 import ItemCommentList from "./ItemCommentList";
+import useItemComment from "@/hooks/useItemComment.ts";
 
-interface CommentProps {
-  list: CommentType[];
-}
+function ItemCommentSection() {
+  const { list, addFormProps, updateFormProps } = useItemComment();
 
-function ItemCommentSection({ list }: CommentProps) {
   return (
     <CommentSectionWrap>
-      <ItemCommentForm />
-      <ItemCommentList list={list} />
+      <ItemCommentForm formProps={addFormProps} />
+      <ItemCommentList list={list} formProps={updateFormProps} />
     </CommentSectionWrap>
   );
 }

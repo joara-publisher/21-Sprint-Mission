@@ -25,7 +25,7 @@ instance.interceptors.response.use(
         localStorage.removeItem("accessToken");
         localStorage.removeItem("user");
 
-        window.location.href = "/login";
+        window.location.href = "/signin";
       }
     }
     return Promise.reject(error);

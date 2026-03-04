@@ -51,7 +51,7 @@ export const CommentWrap = styled.div`
   }
 `;
 
-export const CommentItem = styled.li`
+export const CommentItem = styled.div`
   position: relative;
   padding-bottom: 12px;
   border-bottom: 1px solid var(--gray300);

@@ -1,6 +1,5 @@
 import { useNavigate, useParams } from "react-router-dom";
 import useItem from "@/hooks/useItem";
-import useItemComment from "@/hooks/useItemComment.ts";
 import Button from "@/components/Button";
 import { Container } from "@/styles/ItemCommonStyles";
 import { ButtonWrap, Divider } from "@/styles/ItemStyles";
@@ -12,7 +11,6 @@ function Item() {
   const { id } = useParams();
   const targetId = Number(id);
   const { item } = useItem(targetId);
-  const { list } = useItemComment(targetId);
   const navigate = useNavigate();
 
   const goToItemList = () => {
@@ -26,7 +24,7 @@ function Item() {
       <Container>
         <ItemDetail item={item} />
         <Divider />
-        <ItemCommentSection list={list} />
+        <ItemCommentSection />
         <ButtonWrap>
           <Button
             className="button defaultButton"
