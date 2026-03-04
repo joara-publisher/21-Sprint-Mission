@@ -1,4 +1,5 @@
 import axios from "@/lib/axios";
+import type { ItemValues } from "@/types/item";
 
 interface GetItemsParams {
   page?: number;
@@ -39,4 +40,19 @@ export const getComments = async (id: number) => {
   });
 
   return response;
+};
+
+export const postImage = async (image: File) => {
+  const formData = new FormData();
+  formData.append("image", image);
+
+  const response = await axios.post("/images/upload", formData);
+
+  return response.data;
+};
+
+export const postProducts = async (data: ItemValues) => {
+  const response = await axios.post("/products", data);
+
+  return response.data;
 };

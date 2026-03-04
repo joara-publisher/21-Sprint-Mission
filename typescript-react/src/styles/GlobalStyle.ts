@@ -25,6 +25,10 @@ const GlobalStyle = createGlobalStyle`
     font-family: "Pretendard", sans-serif;
   }
   
+  .hidden {
+    display: none !important;
+  }
+  
   .mobile-only {
     display: none; 
   }
