@@ -14,7 +14,7 @@ interface TagInputProps {
     currentTags: string[],
     onChange: (value: string[]) => void,
   ) => void;
-  deleteTag: (
+  onDeleteTag: (
     targetIndex: number,
     currentTags: string[],
     onChange: (value: string[]) => void,
@@ -27,7 +27,7 @@ function TagInput({
   placeholder,
   error,
   onKeyDown,
-  deleteTag,
+  onDeleteTag,
 }: TagInputProps) {
   const id = useId();
 
@@ -47,7 +47,7 @@ function TagInput({
             #{tag}
             <button
               type="button"
-              onClick={() => deleteTag(index, field.value, field.onChange)}
+              onClick={() => onDeleteTag(index, field.value, field.onChange)}
             >
               <img src={tagDeleteIcon} alt="태그 삭제" />
             </button>
