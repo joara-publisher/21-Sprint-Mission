@@ -1,6 +1,6 @@
 import { type ControllerRenderProps } from "react-hook-form";
 import { useId } from "react";
-import type { ItemValues } from "./ItemForm";
+import type { ItemValues } from "@/types/item";
 import { ErrorMsg, Input, Label, Tag, TagList } from "@/styles/ItemFormStyles";
 import tagDeleteIcon from "@/assets/icons/form_delete_icon.svg";
 
