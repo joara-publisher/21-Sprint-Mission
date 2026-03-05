@@ -10,7 +10,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { ItemFormSchema, type ItemValues } from "@/types/item";
 import { postImage, postProducts } from "@/lib/item.api";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import { useMutation } from "@tanstack/react-query";
 
 export function useITemForm() {
   const {
@@ -103,9 +103,10 @@ export function useITemForm() {
     return nextImageUrl;
   };
 
-  const onSubmit = async (data: ItemValues) => {
-    try {
+  const { mutate: addProduct } = useMutation({
+    mutationFn: async (data: ItemValues) => {
       let finalData = data;
+
       if (data.images[0] instanceof File) {
         const returnImageUrl = await uploadImage(data.images[0]);
         const imageUrl = [returnImageUrl];
@@ -116,19 +117,19 @@ export function useITemForm() {
         };
       }
 
-      await postProducts(finalData);
+      return await postProducts(finalData);
+    },
+    onSuccess: () => {
       alert("등록되었습니다!");
       navigate("/items");
-    } catch (error) {
-      if (axios.isAxiosError(error)) {
-        const serverMessage = error.response?.data?.message;
-        alert(serverMessage || "서버 응답 오류가 발생했습니다.");
-      } else {
-        alert("예상치 못한 에러가 발생했습니다.");
-      }
+    },
+    onError: (error) => {
       console.error(error);
-      throw error;
-    }
+    },
+  });
+
+  const onSubmit = (data: ItemValues) => {
+    addProduct(data);
   };
 
   return {

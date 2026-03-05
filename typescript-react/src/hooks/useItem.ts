@@ -1,30 +1,28 @@
-import { useCallback, useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 import { getProduct } from "@/lib/item.api";
 import type { ItemType } from "@/types/item";
 
 function useItem(id: number) {
-  const [item, setItem] = useState<ItemType>();
-
-  const loadItem = useCallback(async () => {
-    let data = null;
-    try {
+  const {
+    data: item,
+    isLoading,
+    isError,
+    error,
+  } = useQuery({
+    queryKey: ["item", id],
+    queryFn: async () => {
       const response = await getProduct(id);
-      data = response.data;
-      setItem(data);
-    } catch (error) {
-      console.error("상품 정보를 불러오지 못했습니다:", error);
-    }
-  }, [id]);
+      return response.data;
+    },
+    enabled: !!id,
+  });
 
-  useEffect(() => {
-    const execute = async () => {
-      await loadItem();
-    };
-
-    execute();
-  }, [loadItem]);
-
-  return { item };
+  return {
+    item: item as ItemType,
+    isLoading,
+    isError,
+    error,
+  };
 }
 
 export default useItem;

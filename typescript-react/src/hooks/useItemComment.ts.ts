@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useParams } from "react-router-dom";
@@ -21,29 +21,19 @@ function useItemComment() {
   const { id } = useParams();
   const productId = Number(id);
 
-  const [list, setList] = useState<CommentType[]>([]);
-
-  const loadComment = useCallback(async () => {
-    let data = null;
-    try {
+  const {
+    data: list,
+    isLoading,
+    isError,
+    error,
+  } = useQuery({
+    queryKey: ["item", id],
+    queryFn: async () => {
       const response = await getComments(productId);
-      data = response.data;
-    } catch (error) {
-      console.error("상품 문의를 불러오지 못했습니다:", error);
-    }
-
-    if (!data) return;
-    const { list } = data;
-    setList(list);
-  }, [productId]);
-
-  useEffect(() => {
-    const execute = async () => {
-      await loadComment();
-    };
-
-    execute();
-  }, [loadComment]);
+      return response.data.list;
+    },
+    enabled: !!productId,
+  });
 
   const {
     control: addControl,
@@ -59,21 +49,28 @@ function useItemComment() {
     },
   });
 
-  const onSubmitComment = async (data: ItemCommentValues) => {
-    try {
-      await postComment(data.productId, data.content);
-      await loadComment();
+  const queryClient = useQueryClient();
+
+  const { mutate: addCommentMutation } = useMutation({
+    mutationFn: (data: ItemCommentValues) =>
+      postComment(data.productId, data.content),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["item", id] });
       resetAdd({ productId: productId, content: "" });
-    } catch (error) {
+    },
+    onError: (error) => {
       if (axios.isAxiosError(error)) {
-        const serverMessage = error.response?.data?.message;
-        alert(serverMessage || "서버 응답 오류가 발생했습니다.");
+        alert(
+          error.response?.data?.message || "서버 응답 오류가 발생했습니다.",
+        );
       } else {
         alert("예상치 못한 에러가 발생했습니다.");
       }
-      console.error(error);
-      throw error;
-    }
+    },
+  });
+
+  const onSubmitComment = (data: ItemCommentValues) => {
+    addCommentMutation(data);
   };
 
   const {
@@ -89,56 +86,60 @@ function useItemComment() {
     },
   });
 
-  const onUpdateComment = async (
-    commentId: number,
-    data: CommentUpdateValues,
-  ) => {
-    try {
-      const response = await patchComment(commentId, data.content);
-      const updateContent = response.data.content;
-      setList((prevList) =>
-        prevList.map((item) =>
-          item.id === commentId
-            ? {
-                ...item,
-                content: updateContent,
-                updatedAt: new Date().toISOString(),
-              }
-            : item,
-        ),
-      );
+  const { mutate: updateCommentMutation } = useMutation({
+    mutationFn: ({
+      commentId,
+      data,
+    }: {
+      commentId: number;
+      data: CommentUpdateValues;
+    }) => patchComment(commentId, data.content),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["item", id] });
       resetUpdate({ content: "" });
-    } catch (error) {
+    },
+    onError: (error) => {
       if (axios.isAxiosError(error)) {
-        const serverMessage = error.response?.data?.message;
-        alert(serverMessage || "서버 응답 오류가 발생했습니다.");
+        alert(
+          error.response?.data?.message || "서버 응답 오류가 발생했습니다.",
+        );
       } else {
         alert("예상치 못한 에러가 발생했습니다.");
       }
-      console.error(error);
-      throw error;
-    }
+    },
+  });
+
+  const onUpdateComment = (commentId: number, data: CommentUpdateValues) => {
+    updateCommentMutation({ commentId, data });
   };
 
-  const onDeleteComment = async (commentId: number) => {
-    try {
-      await DeleteComment(commentId);
-      setList((prevList) => prevList.filter((item) => item.id !== commentId));
-      resetUpdate({ content: "" });
-    } catch (error) {
+  const { mutate: deleteCommentMutation } = useMutation({
+    mutationFn: (commentId: number) => DeleteComment(commentId),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["item", id] });
+    },
+    onError: (error) => {
       if (axios.isAxiosError(error)) {
-        const serverMessage = error.response?.data?.message;
-        alert(serverMessage || "서버 응답 오류가 발생했습니다.");
+        alert(
+          error.response?.data?.message || "서버 응답 오류가 발생했습니다.",
+        );
       } else {
         alert("예상치 못한 에러가 발생했습니다.");
       }
-      console.error(error);
-      throw error;
-    }
+    },
+  });
+
+  const onDeleteComment = (commentId: number) => {
+    deleteCommentMutation(commentId);
   };
 
   return {
-    list,
+    listProps: {
+      list: list as CommentType[],
+      isLoading,
+      isError,
+      error,
+    },
     addFormProps: {
       control: addControl,
       isValid: isAddValid,

@@ -75,7 +75,12 @@ function ItemCommentItem({ comment, formProps }: commentItemProps) {
             )}
           />
           <CommentUpdateMenu>
-            <Button className="button ghost">취소</Button>
+            <Button
+              className="button ghost"
+              onClick={() => setIsEditing(false)}
+            >
+              취소
+            </Button>
             <Button
               className="button defaultButton"
               type="submit"

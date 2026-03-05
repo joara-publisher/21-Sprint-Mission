@@ -1,45 +1,77 @@
+import { useQuery } from "@tanstack/react-query";
 import { getProducts } from "@/lib/item.api";
-import { useCallback, useEffect, useState } from "react";
+import { useState, type ChangeEvent } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
-function useProducts(
-  order: "recent" | "favorite",
-  keyword: string,
-  currentPage: number,
-  pageSize: number,
-) {
-  const [list, setList] = useState([]);
-  const [totalCount, setTotalCount] = useState(0);
+function useProducts(pageSize: number) {
+  const [order, setOrder] = useState<"recent" | "favorite">("recent");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const initKeyword = searchParams.get("keyword");
+  const [keyword, setKeyword] = useState(initKeyword || "");
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const navigate = useNavigate();
 
-  const loadProducts = useCallback(async () => {
-    let data = null;
-    try {
+  const { data, isLoading, isError, error } = useQuery({
+    queryKey: ["items", { currentPage, pageSize, order, keyword }],
+    queryFn: async () => {
       const response = await getProducts({
         page: currentPage,
         pageSize: pageSize,
         orderBy: order,
         keyword: keyword,
       });
-      data = response.data;
-    } catch (error) {
-      console.error("에러가 발생했습니다." + error);
-    }
+      return response.data;
+    },
+  });
 
-    if (!data) return;
+  const list = data?.list || [];
+  const totalCount = data?.totalCount || 0;
 
-    const { list, totalCount } = data;
-    setList(list);
-    setTotalCount(totalCount);
-  }, [currentPage, pageSize, order, keyword]);
+  const toggleDropdown = () => {
+    setDropdownOpen(!dropdownOpen);
+  };
 
-  useEffect(() => {
-    const execute = async () => {
-      await loadProducts();
-    };
+  const changeOrder = (order: "recent" | "favorite") => {
+    setDropdownOpen(!dropdownOpen);
+    setOrder(order);
+    setCurrentPage(1);
+  };
 
-    execute();
-  }, [loadProducts]);
+  const changeKeyword = (e: ChangeEvent<HTMLInputElement>) => {
+    const keyword = e.target.value;
+    setKeyword(keyword);
+    setSearchParams(keyword ? { keyword } : {});
+    setCurrentPage(1);
+  };
 
-  return { list, totalCount };
+  const changePage = (num: number) => {
+    setCurrentPage(num);
+  };
+
+  const goToAddItem = () => {
+    navigate("/additem");
+  };
+
+  return {
+    list,
+    totalCount,
+    isLoading,
+    isError,
+    error,
+    state: {
+      order,
+      currentPage,
+      dropdownOpen,
+    },
+    actions: {
+      toggleDropdown,
+      changeOrder,
+      changeKeyword,
+      changePage,
+      goToAddItem,
+    },
+  };
 }
 
 export default useProducts;

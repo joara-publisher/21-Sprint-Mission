@@ -12,6 +12,15 @@ import type {
   UseFormHandleSubmit,
   UseFormReset,
 } from "react-hook-form";
+import type { AxiosError } from "axios";
+import axios from "axios";
+
+interface ListProps {
+  list: CommentType[] | undefined;
+  isLoading: boolean;
+  isError: boolean;
+  error: Error | AxiosError | null;
+}
 
 interface FormPropsContent {
   control: Control<CommentUpdateValues>;
@@ -23,14 +32,27 @@ interface FormPropsContent {
 }
 
 interface commentListProps {
-  list: CommentType[];
+  listProps: ListProps;
   formProps: FormPropsContent;
 }
 
-function ItemCommentList({ list, formProps }: commentListProps) {
+function ItemCommentList({ listProps, formProps }: commentListProps) {
+  const { list, isLoading, isError, error } = listProps;
+
+  if (isLoading) return <div>Loading...</div>;
+
+  if (isError) {
+    if (axios.isAxiosError(error)) {
+      const message =
+        error.response?.data?.message || "댓글을 불러올 수 없습니다.";
+      return <div>{message}</div>;
+    }
+    return <div>알 수 없는 에러가 발생했습니다.</div>;
+  }
+
   return (
     <div>
-      {list.length > 0 ? (
+      {list && list.length > 0 ? (
         <CommentWrap>
           {list.map((comment, index) => (
             <ItemCommentItem

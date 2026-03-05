@@ -1,36 +1,24 @@
-import { useCallback, useEffect, useState } from "react";
 import { getProducts } from "@/lib/item.api";
+import { useQuery } from "@tanstack/react-query";
 
 function useBestProducts(bestPageSize: number) {
-  const [bestList, setBestList] = useState([]);
-
-  const loadBestProducts = useCallback(async () => {
-    let data = null;
-    try {
+  const {
+    data: bestList,
+    isLoading: isBestLoading,
+    isError: isBestError,
+    error: bestError,
+  } = useQuery({
+    queryKey: ["bestItems"],
+    queryFn: async () => {
       const response = await getProducts({
         pageSize: bestPageSize,
         orderBy: "favorite",
       });
-      data = response.data;
-    } catch (error) {
-      console.error("에러가 발생했습니다." + error);
-    }
+      return response.data.list;
+    },
+  });
 
-    if (!data) return;
-
-    const { list } = data;
-    setBestList(list);
-  }, [bestPageSize]);
-
-  useEffect(() => {
-    const execute = async () => {
-      await loadBestProducts();
-    };
-
-    execute();
-  }, [loadBestProducts]);
-
-  return { bestList };
+  return { bestList, isBestLoading, isBestError, bestError };
 }
 
 export default useBestProducts;
