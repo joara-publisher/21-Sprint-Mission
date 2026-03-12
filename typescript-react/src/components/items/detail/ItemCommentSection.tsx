@@ -4,12 +4,16 @@ import ItemCommentList from "./ItemCommentList";
 import useItemComment from "@/hooks/useItemComment.ts";
 
 function ItemCommentSection() {
-  const { listProps, addFormProps, updateFormProps } = useItemComment();
+  const { commentListProps, commentAddFormProps, commentUpdateFormProps } =
+    useItemComment();
 
   return (
     <CommentSectionWrap>
-      <ItemCommentForm formProps={addFormProps} />
-      <ItemCommentList listProps={listProps} formProps={updateFormProps} />
+      <ItemCommentForm formProps={commentAddFormProps} />
+      <ItemCommentList
+        listProps={commentListProps}
+        formProps={commentUpdateFormProps}
+      />
     </CommentSectionWrap>
   );
 }

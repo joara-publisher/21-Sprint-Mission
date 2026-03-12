@@ -30,7 +30,7 @@ function Pagination({
   const startPage = (currentGroup - 1) * PAGELIMIT + 1;
   const endPage = Math.min(startPage + PAGELIMIT - 1, totalPages);
 
-  const pages = [];
+  const pages: number[] = [];
   for (let i = startPage; i <= endPage; i++) {
     pages.push(i);
   }
@@ -40,26 +40,37 @@ function Pagination({
       <PaginationList>
         <PrevButton>
           <button
+            type="button"
+            aria-label="이전 페이지로 이동"
             onClick={() => onChange(currentPage - 1)}
             disabled={currentPage === 1}
           >
-            <img src={pageArrImg} alt="이전 버튼 이미지" />
+            <img src={pageArrImg} alt="" />
           </button>
         </PrevButton>
 
         {pages.map((num) => (
-          <PaginationItem className={num === currentPage ? "active" : ""}>
-            <PaginationButton onClick={() => onChange(num)}>
+          <PaginationItem
+            key={num}
+            className={num === currentPage ? "active" : ""}
+          >
+            <PaginationButton
+              type="button"
+              aria-label={`${num} 페이지로 이동`}
+              onClick={() => onChange(num)}
+            >
               {num}
             </PaginationButton>
           </PaginationItem>
         ))}
         <NextButton>
           <button
+            type="button"
+            aria-label="다음 페이지로 이동"
             onClick={() => onChange(currentPage + 1)}
             disabled={currentPage === totalPages}
           >
-            <img src={pageArrImg} alt="다음 버튼 이미지" />
+            <img src={pageArrImg} alt="" />
           </button>
         </NextButton>
       </PaginationList>

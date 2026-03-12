@@ -2,7 +2,6 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useParams } from "react-router-dom";
-import axios from "axios";
 import {
   DeleteComment,
   getComments,
@@ -16,6 +15,7 @@ import {
   type CommentUpdateValues,
   type ItemCommentValues,
 } from "@/types/comment";
+import { handleError } from "@/utils/error";
 
 function useItemComment() {
   const { id } = useParams();
@@ -26,8 +26,8 @@ function useItemComment() {
     isLoading,
     isError,
     error,
-  } = useQuery({
-    queryKey: ["item", id],
+  } = useQuery<CommentType[]>({
+    queryKey: ["item", id, "comments"],
     queryFn: async () => {
       const response = await getComments(productId);
       return response.data.list;
@@ -55,17 +55,11 @@ function useItemComment() {
     mutationFn: (data: ItemCommentValues) =>
       postComment(data.productId, data.content),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["item", id] });
+      queryClient.invalidateQueries({ queryKey: ["item", id, "comments"] });
       resetAdd({ productId: productId, content: "" });
     },
     onError: (error) => {
-      if (axios.isAxiosError(error)) {
-        alert(
-          error.response?.data?.message || "서버 응답 오류가 발생했습니다.",
-        );
-      } else {
-        alert("예상치 못한 에러가 발생했습니다.");
-      }
+      handleError(error);
     },
   });
 
@@ -95,17 +89,11 @@ function useItemComment() {
       data: CommentUpdateValues;
     }) => patchComment(commentId, data.content),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["item", id] });
+      queryClient.invalidateQueries({ queryKey: ["item", id, "comments"] });
       resetUpdate({ content: "" });
     },
     onError: (error) => {
-      if (axios.isAxiosError(error)) {
-        alert(
-          error.response?.data?.message || "서버 응답 오류가 발생했습니다.",
-        );
-      } else {
-        alert("예상치 못한 에러가 발생했습니다.");
-      }
+      handleError(error);
     },
   });
 
@@ -116,16 +104,10 @@ function useItemComment() {
   const { mutate: deleteCommentMutation } = useMutation({
     mutationFn: (commentId: number) => DeleteComment(commentId),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["item", id] });
+      queryClient.invalidateQueries({ queryKey: ["item", id, "comments"] });
     },
     onError: (error) => {
-      if (axios.isAxiosError(error)) {
-        alert(
-          error.response?.data?.message || "서버 응답 오류가 발생했습니다.",
-        );
-      } else {
-        alert("예상치 못한 에러가 발생했습니다.");
-      }
+      handleError(error);
     },
   });
 
@@ -134,19 +116,19 @@ function useItemComment() {
   };
 
   return {
-    listProps: {
+    commentListProps: {
       list: list as CommentType[],
       isLoading,
       isError,
       error,
     },
-    addFormProps: {
+    commentAddFormProps: {
       control: addControl,
       isValid: isAddValid,
       onFormSubmit: handleAddSubmit,
       onSubmitComment,
     },
-    updateFormProps: {
+    commentUpdateFormProps: {
       control: updateControl,
       isValid: isUpdateValid,
       reset: resetUpdate,

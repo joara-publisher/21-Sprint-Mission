@@ -26,7 +26,7 @@ export const TitleBox = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 16px;
+  margin-bottom: 24px;
 
   @media (max-width: 767px) {
     flex-wrap: wrap;

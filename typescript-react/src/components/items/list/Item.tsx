@@ -25,9 +25,7 @@ function ItemListItem({ list, category }: ItemListItemProps) {
           <ListItemLink to={`/items/${item.id}`}>
             <ListItemImg src={item.images[0]} alt={`${item.name} 이미지`} />
             <ListItemName>{item.name}</ListItemName>
-            <ListItemPrice>
-              {item.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원
-            </ListItemPrice>
+            <ListItemPrice>{item.price.toLocaleString()}원</ListItemPrice>
             <ListItemFavoritButton>
               <FavoritButtonImg src={ItemLikeIcon} alt="하트 아이콘" />
               <FavoritButtonCount>{item.favoriteCount}</FavoritButtonCount>
